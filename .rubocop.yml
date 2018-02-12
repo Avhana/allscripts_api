@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
