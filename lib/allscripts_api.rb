@@ -2,7 +2,19 @@
 
 require "allscripts_api/version"
 
-# Entyr point for the AllscriptsApi gem. 
+# Entyr point for the AllscriptsApi gem.
 module AllscriptsApi
-  # Your code goes here...
+  # Error wrapper of Unity or other Allscripts API errors.
+  class APIError < RuntimeError
+  end
+
+  # Error raised whenever Unity's '/GetToken' call fails or returns an error.
+  class GetTokenError < RuntimeError
+  end
+
+  def new(options = {}, &block)
+    Client.new(options, &block)
+  end
 end
+
+require "allscripts_api/client"
