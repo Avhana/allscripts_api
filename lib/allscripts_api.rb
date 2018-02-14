@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "allscripts_api/client"
+require "allscripts_api/numbered_params"
 require "allscripts_api/version"
 
 # Entyr point for the AllscriptsApi gem.
@@ -12,9 +14,7 @@ module AllscriptsApi
   class GetTokenError < RuntimeError
   end
 
-  def new(options = {}, &block)
-    Client.new(options, &block)
+  def new(options = {})
+    Client.new(nil, nil, nil)
   end
 end
-
-require "allscripts_api/client"

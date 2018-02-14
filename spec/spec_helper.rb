@@ -1,4 +1,8 @@
 require "bundler/setup"
+
+require "coveralls"
+Coveralls.wear!
+require "pry"
 require "allscripts_api"
 
 RSpec.configure do |config|
