@@ -3,6 +3,7 @@ require "bundler/setup"
 require "coveralls"
 Coveralls.wear!
 require "pry"
+require "webmock/rspec"
 require "allscripts_api"
 
 RSpec.configure do |config|

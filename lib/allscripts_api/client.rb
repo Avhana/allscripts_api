@@ -5,7 +5,7 @@ require "json"
 module AllscriptsApi
   # Client serves as an entry point for making calls
   class Client
-    attr_reader :adapter, :unity_url, :app_name
+    attr_reader :adapter, :unity_url, :app_name, :token
     ENDPOINT = "/Unity/UnityService.svc/json".freeze
 
     def initialize(app_name, url, username, password)
@@ -18,7 +18,7 @@ module AllscriptsApi
 
     # Gets security token necessary in all workflows
     # @return [String] security token
-    def token
+    def get_token
       conn = build_conn
       full_path = build_request_path("/GetToken")
       response = conn.post do |req|
@@ -26,7 +26,7 @@ module AllscriptsApi
         req.headers["Content-Type"] = "application/json"
         req.body = { Username: @username, Password: @password }.to_json
       end
-      response.body
+      @token = response.body
     end
 
     def validate_sso_token(sso_token, unity_url, token)
