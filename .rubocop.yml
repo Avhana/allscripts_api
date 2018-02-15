@@ -7,3 +7,7 @@ Style/StringLiterals:
 
 Style/FrozenStringLiteralComment:
   EnforcedStyle: always
+
+Style/AccessorMethodName:
+  Exclude:
+    - 'lib/allscripts_api/client.rb'

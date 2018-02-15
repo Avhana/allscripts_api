@@ -19,14 +19,16 @@ module AllscriptsApi
     # Gets security token necessary in all workflows
     # @return [String] security token
     def get_token
-      conn = build_conn
       full_path = build_request_path("/GetToken")
-      response = conn.post do |req|
+      response = build_conn.post do |req|
         req.url(full_path)
-        req.headers["Content-Type"] = "application/json"
         req.body = { Username: @username, Password: @password }.to_json
       end
-      @token = response.body
+      if response.status == 200
+        @token = response.body
+      else
+        raise GetTokenError, response.body
+      end
     end
 
     def validate_sso_token(sso_token, unity_url, token)
@@ -39,7 +41,6 @@ module AllscriptsApi
       response =
         conn.post do |req|
           req.url(full_path)
-          req.headers["Content-Type"] = "application/json"
           req.body = body
         end
       response.body
@@ -65,6 +66,7 @@ module AllscriptsApi
 
     def build_conn
       Faraday.new(url: @unity_url) do |faraday|
+        faraday.headers["Content-Type"] = "application/json"
         faraday.adapter(@adapter)
       end
     end
