@@ -5,15 +5,15 @@ require "json"
 module AllscriptsApi
   # Client serves as an entry point for making calls
   class Client
+    attr_reader :adapter, :unity_url, :app_name
     ENDPOINT = "/Unity/UnityService.svc/json".freeze
 
     def initialize(app_name, url, username, password)
       @adapter = Faraday.default_adapter # make requests with Net::HTTP
       @username = username
       @password = password
-      @unity_endpoint = url
+      @unity_url = url
       @app_name = app_name
-      @token = token
     end
 
     # Gets security token necessary in all workflows
@@ -29,7 +29,7 @@ module AllscriptsApi
       response.body
     end
 
-    def validate_sso_token(sso_token, unity_endpoint, token)
+    def validate_sso_token(sso_token, unity_url, token)
     end
 
     def magic(action, patient_id, numbered_params: NumberedParams.format())
@@ -64,7 +64,7 @@ module AllscriptsApi
     end
 
     def build_conn
-      Faraday.new(url: @unity_endpoint) do |faraday|
+      Faraday.new(url: @unity_url) do |faraday|
         faraday.adapter(@adapter)
       end
     end
