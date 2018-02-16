@@ -23,7 +23,7 @@ RSpec.describe AllscriptsApi::Client do
     end
   end
 
-  describe "#token" do
+  describe "#get_token" do
     before do
       full_uri = "http://twlatestga.unitysandbox.com/Unity/UnityService.svc/json/GetToken"
       stub_request(:post, full_uri)
@@ -41,12 +41,6 @@ RSpec.describe AllscriptsApi::Client do
     end
   end
 
-  describe "#build_request_path" do
-    let(:path) { "/GetToken" }
-    let(:expected) { "/Unity/UnityService.svc/json/GetToken"}
-
-    it "builds a valid request path" do
-      expect(subject.build_request_path(path)).to eq(expected)
-    end
+  describe "#magic" do
   end
 end
