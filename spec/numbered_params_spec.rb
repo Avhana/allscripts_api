@@ -4,9 +4,11 @@ RSpec.describe AllscriptsApi::NumberedParams do
   describe "format" do
     let(:empty_params_hash) do
       {
+        AppUserID: "", PatientID: "",
         Parameter1: "", Parameter2: "",
         Parameter3: "", Parameter4: "",
-        Parameter5: "", Parameter6: ""
+        Parameter5: "", Parameter6: "",
+        Data: {}
       }
     end
 

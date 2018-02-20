@@ -8,6 +8,12 @@ module AllscriptsApi
     attr_reader :adapter, :unity_url, :app_name, :token
     ENDPOINT = "/Unity/UnityService.svc/json".freeze
 
+    # Instantiation of the Client
+    #
+    # @param app_name [String] app name assigned by Allscripts
+    # @param url [String] Allscripts URL to be used to make Unity API calls
+    # @param username [String] the applications username supplied by Allscripts
+    # @param password [String] the applications password supplied by Allscripts
     def initialize(app_name, url, username, password)
       @adapter = Faraday.default_adapter # make requests with Net::HTTP
       @username = username
@@ -20,7 +26,7 @@ module AllscriptsApi
     # @return [String] security token
     def get_token
       full_path = build_request_path("/GetToken")
-      response = build_conn.post do |req|
+      response = conn.post do |req|
         req.url(full_path)
         req.body = { Username: @username, Password: @password }.to_json
       end
@@ -38,7 +44,7 @@ module AllscriptsApi
     # @param password [String] the Allscripts user's password (from Allscripts)
     # @return [Hash] user permissions, etc.
     def get_user_authentication(username, password)
-      params = NumberedParams.format(parameter1: password)
+      params = MagicParams.format(parameter1: password)
       magic("GetUserAuthentication", username, "", params: params)
     end
 
@@ -48,17 +54,16 @@ module AllscriptsApi
     # Main method for interacting with the Allscripts UNityAPI
     #
     # @param action [String] the API action to be performed
-    # @param patient_id [String] optional patient ID for some
-    # api calls related to specific patients
-    # @param params [NumberedParams] a numbered params object
-    # used to build the Magic Action request body's numbered
-    # parameters. They are generally optional, but must be sent
+    # @param params [MagicParams] a params object
+    # used to build the Magic Action request body's user_id,
+    # patient_id, and numbered parameters. The patient_id
+    # is sometimes oprional and the numbered
+    # params are generally optional, but must be sent
     # as blank strings if unused.
     # @return [Hash] the parsed JSON response from Allscripts
-    def magic(action, user_id, patient_id, params: NumberedParams.format)
+    def magic(action, params: MagicParams.format)
       full_path = build_request_path("/MagicJson")
-      body = build_magic_body(action, user_id, patient_id, params)
-      conn = build_conn
+      body = build_magic_body(action, params)
       response =
         conn.post do |req|
           req.url(full_path)
@@ -75,14 +80,11 @@ module AllscriptsApi
       JSON.parse(response.body)[0]
     end
 
-    def build_magic_body(action, user_id, patient_id, params)
+    def build_magic_body(action, params)
       params.merge(
         Action: action,
         Appname: @app_name,
-        AppUserID: user_id,
-        PatientID: patient_id,
-        Token: @token,
-        Data: ""
+        Token: @token
       ).to_json
     end
 
@@ -90,8 +92,8 @@ module AllscriptsApi
       "#{ENDPOINT}#{path}"
     end
 
-    def build_conn
-      Faraday.new(url: @unity_url) do |faraday|
+    def conn
+      @conn ||= Faraday.new(url: @unity_url) do |faraday|
         faraday.headers["Content-Type"] = "application/json"
         faraday.adapter(@adapter)
       end
