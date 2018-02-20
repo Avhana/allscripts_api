@@ -1,8 +1,16 @@
 # frozen_string_literal: true
 
+require "allscripts_api/client"
+require "allscripts_api/magic_params"
 require "allscripts_api/version"
 
-# Entyr point for the AllscriptsApi gem. 
+# Entyr point for the AllscriptsApi gem.
 module AllscriptsApi
-  # Your code goes here...
+  # Error wrapper of Unity or other Allscripts API errors.
+  class MagicError < RuntimeError
+  end
+
+  # Error raised whenever Unity's '/GetToken' call fails or returns an error.
+  class GetTokenError < RuntimeError
+  end
 end
