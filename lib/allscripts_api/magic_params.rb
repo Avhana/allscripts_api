@@ -2,7 +2,7 @@
 
 module AllscriptsApi
   # A simple formatter for Magic Action's numbered perameters
-  class NumberedParams
+  class MagicParams
     def self.format(user_id: "", patient_id: "", parameter1: "", parameter2: "", parameter3: "", parameter4: "", parameter5: "", parameter6: "", data: {})
       {
         AppUserID: user_id,
