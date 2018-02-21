@@ -25,13 +25,13 @@ RSpec.describe AllscriptsApi::Client do
 
   describe "#get_token" do
     before do
-      full_uri = "http://twlatestga.unitysandbox.com/Unity/UnityService.svc/json/GetToken"
+      full_uri = "http://unitysandbox.example/Unity/UnityService.svc/json/GetToken"
       stub_request(:post, full_uri)
         .to_return(status: 200,
                    body: "BFB3B998-A668-4300-A48B-0977E3DFA108",
                    headers: { "content-type" => "application/octet-stream" })
     end
-    let(:url) { "http://twlatestga.unitysandbox.com" }
+    let(:url) { "http://unitysandbox.example" }
     let(:token) { "BFB3B998-A668-4300-A48B-0977E3DFA108" }
 
     it "sets a client token" do
