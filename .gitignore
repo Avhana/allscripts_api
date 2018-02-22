@@ -11,3 +11,5 @@
 .rspec_status
 
 .vscode/
+
+/spec/fixtures/secrets.yml

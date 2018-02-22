@@ -1,6 +1,8 @@
 AllCops:
   Exclude:
-    - 'bin/*'
+    - "bin/*"
+    - .pryrc
+    - "spec/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -10,4 +12,11 @@ Style/FrozenStringLiteralComment:
 
 Style/AccessorMethodName:
   Exclude:
-    - 'lib/allscripts_api/client.rb'
+    - "lib/allscripts_api/client.rb"
+
+# Bumbing the max from 10 to 15 allows magic params to work nicely
+Metrics/MethodLength:
+  Max: 15
+# Bumbing the max from 5 to 6 allows magic params to work nicely
+Metrics/ParameterLists:
+  Max: 6

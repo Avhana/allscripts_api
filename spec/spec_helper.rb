@@ -5,6 +5,7 @@ Coveralls.wear!
 require "pry"
 require "webmock/rspec"
 require "allscripts_api"
+require "helpers"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
