@@ -22,18 +22,17 @@ module AllscriptsApi
                              encounter_id = nil,
                              filter_on_id = nil,
                              display_in_progress = nil)
-      params =
-        MagicParams.format(
-          user_id: @allscripts_username,
-          patient_id: patient_id,
-          parameter1: show_by_encounter,
-          parameter2: assessed,
-          parameter3: encounter_id,
-          parameter4: filter_on_id,
-          parameter5: display_in_progress
-        )
+      params = MagicParams.format(
+        user_id: @allscripts_username,
+        patient_id: patient_id,
+        parameter1: show_by_encounter,
+        parameter2: assessed,
+        parameter3: encounter_id,
+        parameter4: filter_on_id,
+        parameter5: display_in_progress
+      )
       results = magic("GetPatientProblems", magic_params: params)
-      results ["getpatientproblemsinfo"]
+      results["getpatientproblemsinfo"]
     end
   end
 end

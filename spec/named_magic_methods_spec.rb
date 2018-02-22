@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe AllscriptsApi::NamedMagicMethods do
+  # Note: skip: @if_no_secrets causes a describe block to be skipped if 
+  # the environment isn't properly set up.
   before do
     WebMock.allow_net_connect!
     check_and_load_secrets
@@ -27,6 +29,25 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
       it "returns an empty array" do
         subject
         expect(subject.length).to eq(0)
+      end
+    end
+  end
+
+  describe "#get_patient_problems", skip: @if_no_secrets do
+    let(:subject) { @client.get_patient_problems(patient_id) }
+    context "by patient id only" do
+      let(:patient_id) { 31 }
+      it "fetches problems for the specified patient" do
+        subject
+        expect(subject.length).to be >= 1
+        expect(subject.map { |prob| prob["problemtext"] }).to include("Atrial fibrillation")
+      end
+    end
+
+    context "with no results" do
+      let(:patient_id) { 0 }
+      it "raises an error when Allscripts returns an id error" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
       end
     end
   end

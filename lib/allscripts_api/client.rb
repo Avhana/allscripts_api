@@ -87,7 +87,9 @@ module AllscriptsApi
 
     def read_magic_response(response)
       raise(MagicError, response.body) unless response.status == 200
-      JSON.parse(response.body)[0]
+      response_body = JSON.parse(response.body)[0]
+      raise(MagicError, response_body["Error"]) if response_body.key?("Error")
+      response_body
     end
 
     def build_magic_body(action, params)

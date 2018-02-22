@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe AllscriptsApi::MagicParams do
-  describe "format" do
+  describe "#format" do
     let(:empty_params_hash) do
       {
         AppUserID: "", PatientID: "",

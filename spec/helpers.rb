@@ -10,15 +10,13 @@
 #
 # NOTE: this does not protect against bag configuration or bad credentials.
 def check_and_load_secrets
-  begin
-    load_yaml_to_env unless check_env
-    @no_secrets = false
-  rescue
-    puts %(You need to create a spec/fixtures/secrets.yml file and
-          add your credentials, or load those credentials into the ENV
-          to run some tests.)
-    @no_secrets = true
-  end
+  load_yaml_to_env unless check_env
+  @no_secrets = false
+rescue
+  puts %(You need to create a spec/fixtures/secrets.yml file and
+        add your credentials, or load those credentials into the ENV
+        to run some tests.)
+  @no_secrets = true
 end
 
 # checks to see if secrets are already set
