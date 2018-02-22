@@ -6,7 +6,7 @@ RSpec.describe AllscriptsApi::Client do
   let(:username) { "username" }
   let(:password) { "password" }
   let(:subject) do
-    AllscriptsApi::Client.new(app_name, url, username, password)
+    AllscriptsApi::Client.new(url, app_name, username, password)
   end
 
   describe "#new" do

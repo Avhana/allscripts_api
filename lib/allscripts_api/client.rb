@@ -11,11 +11,11 @@ module AllscriptsApi
 
     # Instantiation of the Client
     #
-    # @param app_name [String] app name assigned by Allscripts
     # @param url [String] Allscripts URL to be used to make Unity API calls
+    # @param app_name [String] app name assigned by Allscripts
     # @param app_username [String] the app username supplied by Allscripts
     # @param app_password [String] the app password supplied by Allscripts
-    def initialize(app_name, url, app_username, app_password)
+    def initialize(url, app_name, app_username, app_password)
       @adapter = Faraday.default_adapter # make requests with Net::HTTP
       @username = app_username
       @password = app_password

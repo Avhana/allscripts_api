@@ -2,7 +2,7 @@
 
 # Checks te ENV with `check_env` to see if secrets are already set
 # by this file or from an external source, e.g. CI. If they exist
-# a variable is set to prevent test skipping. If ther are not present,
+# a variable is set to prevent test skipping. If they are not present,
 # `load_yaml_to_env` attempts to load them from and YAML file, and sets
 # the flag as well.
 # If both cases fail, the flag is set to true so that tests attempting to
@@ -35,8 +35,8 @@ end
 
 def build_and_auth_client
   client =
-    AllscriptsApi::Client.new(ENV["app_name"],
-                              ENV["unity_url"],
+    AllscriptsApi::Client.new(ENV["unity_url"],
+                              ENV["app_name"],
                               ENV["app_username"],
                               ENV["app_password"])
   client.get_token
