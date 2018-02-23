@@ -16,6 +16,21 @@ module AllscriptsApi
   class GetTokenError < RuntimeError
   end
 
+  # Error raised if AllscriptsApi.connect is called without configuring
+  # the gem first
+  class NoConfigurationError < RuntimeError
+    def self.error_message
+      %(Please add the following to config/initializers and try again.
+        AllscriptsApi.configure do |config|
+          config.app_name = 'YOUR_APP_NAME_HERE'
+          config.app_username = 'YOUR_APP_USERNAME_HERE'
+          config.app_password = 'YOUR_APP_PASSWORD_HERE'
+          config.unity_url = 'CHOSEN_UNITY_URL'
+        end
+      )
+    end
+  end
+
   class << self
     attr_accessor :configuration
 
@@ -25,6 +40,9 @@ module AllscriptsApi
     end
 
     def connect
+      unless AllscriptsApi.configuration
+        raise NoConfigurationError, NoConfigurationError.error_message
+      end
       unity_url = AllscriptsApi.configuration.unity_url
       app_name = AllscriptsApi.configuration.app_name
       app_username = AllscriptsApi.configuration.app_username

@@ -21,8 +21,11 @@ module AllscriptsApi
       @username = app_username
       @password = app_password
       @adapter =
-        AllscriptsApi.configuration.faraday_adapter ||
-        Faraday.default_adapter # make requests with Net::HTTP
+        if AllscriptsApi.configuration
+          AllscriptsApi.configuration.faraday_adapter
+        else
+          Faraday.default_adapter # make requests with Net::HTTP
+        end
     end
 
     # Gets security token necessary in all workflows
