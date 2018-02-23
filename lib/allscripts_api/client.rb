@@ -86,12 +86,7 @@ module AllscriptsApi
     private
 
     def check_adapter
-      @adapter ||=
-        if AllscriptsApi.configuration
-          AllscriptsApi.configuration.faraday_adapter
-        else
-          Faraday.default_adapter # make requests with Net::HTTP
-        end
+      @adapter ||= Faraday.default_adapter # make requests with Net::HTTP
     end
 
     def read_magic_response(response)
