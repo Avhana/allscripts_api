@@ -14,7 +14,10 @@ module AllscriptsApi
   class Configuration
     attr_accessor :app_name, :app_password, :unity_url,
                   :app_username, :faraday_adapter
-
+    # The initialize method may be passed a block, but defaults to fetching
+    # data from the environment
+    #
+    # @return [AllscriptsApi:Configuration] new instance of the config class
     def initialize
       @app_name = ENV["app_name"]
       @app_password = ENV["app_password"]

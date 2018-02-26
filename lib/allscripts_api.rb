@@ -19,6 +19,9 @@ module AllscriptsApi
   # Error raised if AllscriptsApi.connect is called without configuring
   # the gem first
   class NoConfigurationError < RuntimeError
+    # method to return a sample config block
+    #
+    # @return [String] a sample config block
     def self.error_message
       %(Please add the following to config/initializers and try again.
         AllscriptsApi.configure do |config|
@@ -33,12 +36,18 @@ module AllscriptsApi
 
   class << self
     attr_accessor :configuration
-
+    # a method that allows a configuration block to be passed
+    # to {AllscriptsApi::Configuration#new}
+    # @see AllscriptsApi::Configuration
     def configure
       self.configuration ||= AllscriptsApi::Configuration.new
       yield(configuration)
     end
 
+    # The main entry point for a pre-configured client
+    #
+    # @return [AllscriptsApi::Client, AllscriptsApi::NoConfigurationError]
+    # @see AllscriptsApi::Client
     def connect
       unless AllscriptsApi.configuration
         raise NoConfigurationError, NoConfigurationError.error_message

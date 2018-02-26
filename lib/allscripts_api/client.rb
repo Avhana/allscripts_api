@@ -7,6 +7,7 @@ module AllscriptsApi
   class Client
     include AllscriptsApi::NamedMagicMethods
     attr_reader :adapter, :unity_url, :app_name, :token
+    # hardcoded to use the JSON endpoint
     ENDPOINT = "/Unity/UnityService.svc/json".freeze
 
     # Instantiation of the Client
@@ -69,7 +70,7 @@ module AllscriptsApi
     # is sometimes oprional and the numbered
     # params are generally optional, but must be sent
     # as blank strings if unused.
-    # @return [Hash|MagicError] the parsed JSON response from Allscripts or
+    # @return [Hash, MagicError] the parsed JSON response from Allscripts or
     # a `MagicError` with the API error message(hopefully)
     def magic(action, magic_params: MagicParams.format)
       full_path = build_request_path("/MagicJson")
