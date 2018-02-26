@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/Avhana/allscripts_api.svg?branch=master)](https://travis-ci.org/Avhana/allscripts_api)
 [![Dependency Status](https://gemnasium.com/badges/github.com/Avhana/allscripts_api.svg)](https://gemnasium.com/github.com/Avhana/allscripts_api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9889f5255914a5fcbeb5/maintainability)](https://codeclimate.com/github/Avhana/allscripts_api/maintainability)
+[![security](https://hakiri.io/github/Avhana/allscripts_api/master.svg)](https://hakiri.io/github/Avhana/allscripts_api/master)
 
 AllscriptsApi is a simple ruby wrapper around the [Allscripts Unity API](http://remotecentral.allscripts.com/UnityAPIReference). This gem specifically focuses on the JSON 
 functionality of the API and will not support SOAP. Additionally, `allscripts_api` focuses on being simple 
