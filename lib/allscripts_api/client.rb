@@ -16,11 +16,11 @@ module AllscriptsApi
     # @param app_username [String] the app username supplied by Allscripts
     # @param app_password [String] the app password supplied by Allscripts
     def initialize(url, app_name, app_username, app_password)
-      @adapter = Faraday.default_adapter # make requests with Net::HTTP
-      @username = app_username
-      @password = app_password
       @unity_url = url
       @app_name = app_name
+      @username = app_username
+      @password = app_password
+      @adapter = check_adapter
     end
 
     # Gets security token necessary in all workflows
@@ -84,6 +84,15 @@ module AllscriptsApi
     end
 
     private
+
+    def check_adapter
+      @adapter ||=
+        if AllscriptsApi.configuration
+          AllscriptsApi.configuration.faraday_adapter
+        else
+          Faraday.default_adapter # make requests with Net::HTTP
+        end
+    end
 
     def read_magic_response(response)
       raise(MagicError, response.body) unless response.status == 200
