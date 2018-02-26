@@ -44,6 +44,13 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+## Code of Conduct
+In order to have a more open and welcoming community of contributors and users, Avhana Health will enforce a [Code of Conduct](https://github.com/avhana/allscripts_api/blob/master/code-of-conduct.md), which follows v1.4 of the [Contributors Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct.html).
+
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/allscripts_api.
+Bug reports and pull requests are welcome on GitHub at https://github.com/avhana/allscripts_api.
+
+## License
+
+This gem is provided as is under the [MIT license](https://github.com/avhana/allscripts_api/blob/master/LICENSE), Copyright (c) 2018 Avhana Health, Inc.
