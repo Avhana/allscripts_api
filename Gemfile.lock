@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     allscripts_api (0.1.0)
-      faraday (>= 0.10.0)
+      faraday (>= 0.12.2)
 
 GEM
   remote: https://rubygems.org/
