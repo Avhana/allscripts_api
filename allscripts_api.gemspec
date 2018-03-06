@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "faraday", ">= 0.12.2"
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "coveralls"
+  spec.add_development_dependency "nokogiri"
   spec.add_development_dependency "pronto"
   spec.add_development_dependency "pronto-rubocop"
   spec.add_development_dependency "pry"
