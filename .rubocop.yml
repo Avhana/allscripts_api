@@ -17,6 +17,6 @@ Style/AccessorMethodName:
 # Bumbing the max from 10 to 15 allows magic params to work nicely
 Metrics/MethodLength:
   Max: 15
-# Bumbing the max from 5 to 6 allows magic params to work nicely
+# Bumbing the max from 5 to 7 allows magic params to work nicely
 Metrics/ParameterLists:
-  Max: 6
+  Max: 7

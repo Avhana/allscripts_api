@@ -2,6 +2,7 @@ require "bundler/setup"
 
 require "coveralls"
 Coveralls.wear!
+require "nokogiri"
 require "pry"
 require "webmock/rspec"
 require "allscripts_api"

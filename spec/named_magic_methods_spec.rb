@@ -33,6 +33,31 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 
+  describe "#get_ccda", skip: @if_no_secrets do
+    let(:subject) { @client.get_ccda(patient_id, encounter_id) }
+    context "by patient id and encounter id" do
+      let(:encounter_id) { 1 }
+      let(:patient_id) { 31 }
+      
+      it "fetches a ccda for the specified patient and encounter" do
+        subject
+        xml = Nokogiri::XML(subject).remove_namespaces!
+        expect(xml).to_not be_nil
+        last_name = xml.xpath("//patient/name/family").text
+        expect(last_name).to eq("Allscripts")
+      end
+    end
+
+    context "without required data" do
+      let(:patient_id) { 31 }
+      let(:encounter_id) { "" }
+
+      it "raises an error without a valid encounter" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
+      end
+    end
+  end
+
   describe "#get_patient_problems", skip: @if_no_secrets do
     let(:subject) { @client.get_patient_problems(patient_id) }
     context "by patient id only" do
