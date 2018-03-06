@@ -59,6 +59,35 @@ module AllscriptsApi
       results["getccdainfo"][0]["ccdaxml"]
     end
 
+    # gets data elements of a patient's history
+    #
+    # @param patient_id [String] patient id
+    # @param section [String] section
+    # if no section is specified than all sections wt data are returned
+    # list multiple sections by using a pipe-delimited list ex. "Vitals|Alerts"
+    # @param encounter_id [String] internal identifier for the encounter
+    # the EncounterID can be acquired with GetEncounterList
+    # @param verbose [String] XMLDetail
+    # verbose column will be Y or blank, when Y is provided there will be a
+    # piece of XML data that is specific to that element of the patient's chart
+    # @return [String, AllscriptsApi::MagicError] clinical summary for patient
+    def get_clinical_summary(patient_id,
+                             section = nil,
+                             encounter_id = nil,
+                             verbose = nil)
+      params =
+        MagicParams.format(
+          user_id: @allscripts_username,
+          patient_id: patient_id,
+          parameter1: section,
+          parameter2: encounter_id,
+          parameter3: verbose
+        )
+      results = magic("GetClinicalSummary", magic_params: params)
+      results["getclinicalsummaryinfo"]
+    end
+
+
     # a wrapper around GetPatientProblems
     #
     # @param patient_id [String] patient id

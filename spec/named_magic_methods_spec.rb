@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe AllscriptsApi::NamedMagicMethods do
-  # Note: skip: @if_no_secrets causes a describe block to be skipped if 
+  # Note: skip: @if_no_secrets causes a describe block to be skipped if
   # the environment isn't properly set up.
   before do
     WebMock.allow_net_connect!
@@ -38,7 +38,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     context "by patient id and encounter id" do
       let(:encounter_id) { 1 }
       let(:patient_id) { 31 }
-      
+
       it "fetches a ccda for the specified patient and encounter" do
         subject
         xml = Nokogiri::XML(subject).remove_namespaces!
@@ -54,6 +54,19 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
 
       it "raises an error without a valid encounter" do
         expect { subject }.to raise_error(AllscriptsApi::MagicError)
+      end
+    end
+  end
+
+  describe "#get_clinical_summary", skip: @if_no_secrets do
+    let(:subject) { @client.get_clinical_summary(patient_id) }
+    context "by patient id and encounter id" do
+      let(:patient_id) { 31 }
+
+      it "fetches clinical summary for specified patient and encounter" do
+        subject
+        expect(subject).to_not be_nil
+        expect(subject[0].keys).to include("detail")
       end
     end
   end
