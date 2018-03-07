@@ -87,6 +87,22 @@ module AllscriptsApi
       results["getclinicalsummaryinfo"]
     end
 
+    # gets patient's demographic info, insurance, guarantor, and PCP info
+    #
+    # @param patient_id [String] patient id
+    # @param patient_Number [String] PM patient number
+    # @return [String, AllscriptsApi::MagicError] patient demographics
+    def get_patient(patient_id,
+                    patient_number = nil)
+      params =
+        MagicParams.format(
+          user_id: @allscripts_username,
+          patient_id: patient_id,
+          parameter1: patient_number
+        )
+      results = magic("GetPatient", magic_params: params)
+      results["getpatientinfo"]
+    end
 
     # a wrapper around GetPatientProblems
     #
