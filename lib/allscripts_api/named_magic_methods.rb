@@ -90,7 +90,7 @@ module AllscriptsApi
     # gets patient's demographic info, insurance, guarantor, and PCP info
     #
     # @param patient_id [String] patient id
-    # @param patient_Number [String] PM patient number
+    # @param patient_number [String] PM patient number
     # @return [String, AllscriptsApi::MagicError] patient demographics
     def get_patient(patient_id,
                     patient_number = nil)

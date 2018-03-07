@@ -69,6 +69,14 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
         expect(subject[0].keys).to include("detail")
       end
     end
+    
+    context "without required data" do
+      let(:patient_id) { 0 }
+
+      it "raises an error without a valid patient id" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
+      end
+    end
   end
 
   describe "#get_patient", skip: @if_no_secrets do
@@ -80,6 +88,14 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
         subject
         expect(subject).to_not be_nil
         expect(subject[0].keys).to include("ZipCode")
+      end
+    end
+
+    context "without required data" do
+      let(:patient_id) { 0 }
+
+      it "raises an error without a valid patient id" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
       end
     end
   end
