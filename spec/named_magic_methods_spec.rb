@@ -60,13 +60,42 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
 
   describe "#get_clinical_summary", skip: @if_no_secrets do
     let(:subject) { @client.get_clinical_summary(patient_id) }
-    context "by patient id and encounter id" do
+    context "by patient id" do
       let(:patient_id) { 31 }
 
       it "fetches clinical summary for specified patient and encounter" do
         subject
         expect(subject).to_not be_nil
         expect(subject[0].keys).to include("detail")
+      end
+    end
+    
+    context "without required data" do
+      let(:patient_id) { 0 }
+
+      it "raises an error without a valid patient id" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
+      end
+    end
+  end
+
+  describe "#get_patient", skip: @if_no_secrets do
+    let(:subject) { @client.get_patient(patient_id) }
+    context "by patient id" do
+      let(:patient_id) { 31 }
+
+      it "fetches patient demographic info for specified patient" do
+        subject
+        expect(subject).to_not be_nil
+        expect(subject[0].keys).to include("ZipCode")
+      end
+    end
+
+    context "without required data" do
+      let(:patient_id) { 0 }
+
+      it "raises an error without a valid patient id" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
       end
     end
   end
