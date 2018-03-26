@@ -119,8 +119,8 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 
-  describe "#get_appointments", skip: @if_no_secrets do
-    let(:subject) { @client.get_appointments(start_date, end_date) }
+  describe "#get_schedule", skip: @if_no_secrets do
+    let(:subject) { @client.get_schedule(start_date, end_date) }
     context "with results" do
       let(:start_date) { Date.parse("May 3 2016") }
       let(:end_date) { Date.parse("May 8 2016") }

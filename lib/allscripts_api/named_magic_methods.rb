@@ -140,16 +140,20 @@ module AllscriptsApi
     # @param end_date [Date] end date inclusive
     # @return [Array<Hash>, Array, MagicError] a list of scheduled appointments,
     # an empty array, or an error
-    def get_appointments(start_date, end_date)
-      date_range_formatted =
-        "#{start_date.strftime('%m/%d/%Y')}|#{end_date.strftime('%m/%d/%Y')}"
+    def get_schedule(start_date, end_date)
       params =
         MagicParams.format(
           user_id: @allscripts_username,
-          parameter1: date_range_formatted
+          parameter1: format_date_range(start_date, end_date)
         )
       results = magic("GetSchedule", magic_params: params)
       results["getscheduleinfo"]
+    end
+
+    private
+
+    def format_date_range(start_date, end_date)
+      "#{start_date.strftime('%m/%d/%Y')}|#{end_date.strftime('%m/%d/%Y')}"
     end
   end
 end
