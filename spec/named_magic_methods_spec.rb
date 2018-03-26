@@ -69,7 +69,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
         expect(subject[0].keys).to include("detail")
       end
     end
-    
+
     context "without required data" do
       let(:patient_id) { 0 }
 
@@ -115,6 +115,27 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
       let(:patient_id) { 0 }
       it "raises an error when Allscripts returns an id error" do
         expect { subject }.to raise_error(AllscriptsApi::MagicError)
+      end
+    end
+  end
+
+  describe "#get_schedule", skip: @if_no_secrets do
+    let(:subject) { @client.get_schedule(start_date, end_date) }
+    context "with results" do
+      let(:start_date) { Date.parse("May 3 2016") }
+      let(:end_date) { Date.parse("May 8 2016") }
+
+      it "parses appointments into an array of hashes" do
+        expect(subject.length).to be > 1
+      end
+    end
+
+    context "with no results" do
+      let(:start_date) { Date.parse("May 1 2016") }
+      let(:end_date) { Date.parse("May 1 2016") }
+
+      it "returns empty array" do
+        expect(subject.length).to be 0
       end
     end
   end
