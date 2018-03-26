@@ -132,5 +132,24 @@ module AllscriptsApi
       results = magic("GetPatientProblems", magic_params: params)
       results["getpatientproblemsinfo"]
     end
+
+    # a wrapper around GetSchedule, returns appointments scheduled under the
+    # the user for a given date range
+    #
+    # @param start_date [Date] start date inclusive
+    # @param end_date [Date] end date inclusive
+    # @return [Array<Hash>, Array, MagicError] a list of scheduled appointments,
+    # an empty array, or an error
+    def get_appointments(start_date, end_date)
+      date_range_formatted =
+        "#{start_date.strftime('%m/%d/%Y')}|#{end_date.strftime('%m/%d/%Y')}"
+      params =
+        MagicParams.format(
+          user_id: @allscripts_username,
+          parameter1: date_range_formatted
+        )
+      results = magic("GetSchedule", magic_params: params)
+      results["getscheduleinfo"]
+    end
   end
 end
