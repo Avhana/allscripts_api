@@ -67,7 +67,7 @@ module AllscriptsApi
       response["Table"][0]
     end
 
-    # Main method for interacting with the Allscripts UNityAPI
+    # Main method for interacting with the Allscripts UnityAPI
     #
     # @param action [String] the API action to be performed
     # @param magic_params [MagicParams] a params object
