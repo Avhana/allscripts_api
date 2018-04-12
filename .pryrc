@@ -13,7 +13,7 @@ end
 
 def bc
   client =
-    AllscriptsApi::Client.new(ENV["unity_url"],
+    AllscriptsApi::Client.new("http://twlatestga.unitysandbox.com/",
                               ENV["app_name"],
                               ENV["app_username"],
                               ENV["app_password"])

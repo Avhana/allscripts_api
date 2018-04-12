@@ -46,13 +46,13 @@ module AllscriptsApi
 
     # The main entry point for a pre-configured client
     #
+    # @param unity_url [String] Unity API endpoint to connect to
     # @return [AllscriptsApi::Client, AllscriptsApi::NoConfigurationError]
     # @see AllscriptsApi::Client
-    def connect
+    def connect(unity_url)
       unless AllscriptsApi.configuration
         raise NoConfigurationError, NoConfigurationError.error_message
       end
-      unity_url = AllscriptsApi.configuration.unity_url
       app_name = AllscriptsApi.configuration.app_name
       app_username = AllscriptsApi.configuration.app_username
       app_password = AllscriptsApi.configuration.app_password
