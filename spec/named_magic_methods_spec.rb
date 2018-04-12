@@ -139,4 +139,49 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
       end
     end
   end
+
+  describe "#get_list_of_dictionaries", skip: @if_no_secrets do
+    let(:subject) { @client.get_list_of_dictionaries }
+    it "fetches a list of dictionaries" do
+      subject
+      expect(subject.length).to be >= 1
+      dictionary_list_item = {"TableName"=>"Code_Type_DE", "DictionaryName"=>"Code Type"}
+      expect(subject).to include(dictionary_list_item)
+    end
+  end
+
+  describe "#get_dictionary", skip: @if_no_secrets do
+    let(:subject) { @client.get_dictionary(dictionary_name) }
+    let(:example_data) do
+      {"SiteDE_Active"=>" ",
+        "EntryCode"=>"CPT",
+        "SiteDE_Entryname"=>"",
+        "EntryMnemonic"=>"CPT",
+        "SiteDE_Entrymnemonic"=>"",
+        "SiteDE_ID"=>"0",
+        "ID"=>"3",
+        "Dictionary"=>"Code_Type_DE",
+        "SiteDE_EntryCode"=>"",
+        "EntryName"=>"CPT",
+        "Active"=>"Y"}
+    end
+    
+    context "with a valid name" do
+      let(:dictionary_name) { "Code_Type_DE" }
+
+      it "fetches dictionary codes" do
+        subject
+        expect(subject.length).to be >= 1
+        expect(subject).to include(example_data)
+      end
+    end
+
+    context "with an ivalid name" do
+      let(:dictionary_name) { "OECD" }
+
+      it "returns an error" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
+      end
+    end
+  end
 end

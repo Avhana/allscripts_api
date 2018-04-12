@@ -150,6 +150,33 @@ module AllscriptsApi
       results["getscheduleinfo"]
     end
 
+    # a wrapper around GetListOfDictionaries, which returns
+    # list of all dictionaries
+    #
+    # @return [Array<Hash>, Array, MagicError] a list of found dictionaries,
+    # an empty array, or an error
+    def get_list_of_dictionaries
+      params = MagicParams.format(user_id: @allscripts_username)
+      results = magic("GetListOfDictionaries", magic_params: params)
+      results["getlistofdictionariesinfo"]
+    end
+
+    # a wrapper around GetDictionary, which returnsentries
+    # from a specific dictionary.
+    #
+    # @param dictionary_name [String] the name of the desired dictionary,
+    # a "TableName" value from `get_list_of_dictionaries`
+    # @return [Array<Hash>, Array, MagicError] a list dictionary entries,
+    # an empty array, or an error
+    def get_dictionary(dictionary_name)
+      params = MagicParams.format(
+        user_id: @allscripts_username,
+        parameter1: dictionary_name
+      )
+      results = magic("GetDictionary", magic_params: params)
+      results["getdictionaryinfo"]
+    end
+
     private
 
     def format_date_range(start_date, end_date)
