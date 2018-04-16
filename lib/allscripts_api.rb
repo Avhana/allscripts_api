@@ -28,7 +28,6 @@ module AllscriptsApi
           config.app_name = 'YOUR_APP_NAME_HERE'
           config.app_username = 'YOUR_APP_USERNAME_HERE'
           config.app_password = 'YOUR_APP_PASSWORD_HERE'
-          config.unity_url = 'CHOSEN_UNITY_URL'
         end
       )
     end
