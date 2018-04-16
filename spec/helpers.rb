@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-# Checks te ENV with `check_env` to see if secrets are already set
+# Checks the ENV with `check_env` to see if secrets are already set
 # by this file or from an external source, e.g. CI. If they exist
 # a variable is set to prevent test skipping. If they are not present,
-# `load_yaml_to_env` attempts to load them from and YAML file, and sets
+# `load_yaml_to_env` attempts to load them from an YAML file, and sets
 # the flag as well.
 # If both cases fail, the flag is set to true so that tests attempting to
 # make api calls are skipped.
 #
-# NOTE: this does not protect against bag configuration or bad credentials.
+# NOTE: this does not protect against bad configuration or bad credentials.
 def check_and_load_secrets
   load_yaml_to_env unless check_env
   @no_secrets = false
@@ -23,7 +23,6 @@ end
 def check_env
   ENV["app_name"] &&
     ENV["app_password"] &&
-    ENV["unity_url"] &&
     ENV["app_username"]
 end
 
@@ -35,7 +34,7 @@ end
 
 def build_and_auth_client
   client =
-    AllscriptsApi::Client.new(ENV["unity_url"],
+    AllscriptsApi::Client.new("http://twlatestga.unitysandbox.com/",
                               ENV["app_name"],
                               ENV["app_username"],
                               ENV["app_password"])

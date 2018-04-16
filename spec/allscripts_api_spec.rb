@@ -4,7 +4,7 @@ RSpec.describe AllscriptsApi do
   end
 
   describe "#self.connect" do
-  let(:subject) { AllscriptsApi.connect }
+  let(:subject) { AllscriptsApi.connect("http://test.example") }
     context "without configuration" do
       it "raises an error" do
         expect { subject }.to raise_error(AllscriptsApi::NoConfigurationError)
@@ -15,7 +15,6 @@ RSpec.describe AllscriptsApi do
         AllscriptsApi.configure do |config|
           config.app_name = "Testy.McTestApp"
           config.app_password = "test1234"
-          config.unity_url = "http://test.example"
           config.app_username = "testy"
         end
       end
@@ -40,7 +39,6 @@ RSpec.describe AllscriptsApi do
       AllscriptsApi.configure do |config|
         config.app_name = "Testy.McTestApp"
         config.app_password = "test1234"
-        config.unity_url = "http://test.example"
         config.app_username = "testy"
       end
     end
@@ -49,7 +47,6 @@ RSpec.describe AllscriptsApi do
       subject
       expect(AllscriptsApi.configuration.app_name).to eq("Testy.McTestApp")
       expect(AllscriptsApi.configuration.app_password ).to eq("test1234")
-      expect(AllscriptsApi.configuration.unity_url ).to eq("http://test.example")
       expect(AllscriptsApi.configuration.app_username ).to eq("testy")
     end
   end

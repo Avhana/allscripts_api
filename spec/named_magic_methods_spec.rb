@@ -165,7 +165,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
         "EntryName"=>"CPT",
         "Active"=>"Y"}
     end
-    
+
     context "with a valid name" do
       let(:dictionary_name) { "Code_Type_DE" }
 
@@ -185,3 +185,4 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 end
+
