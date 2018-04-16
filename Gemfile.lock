@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    allscripts_api (0.2.0)
+    allscripts_api (0.3.0)
       faraday (>= 0.12.2)
 
 GEM
