@@ -1,9 +1,8 @@
-module Allscripts
+module AllscriptsApi
   class Order
     def self.build_xml(site_id, emr_user_id, order_date, encounter_id = "")
       date = order_date.strftime("%d-%b-%Y")
       builder = Nokogiri::XML::Builder.new
-
       builder.saveorderxml do
         # a value of 'Y' makes the order visible on the order list
         builder.field("id" => "ordershowonorderlist", "value" => "Y")

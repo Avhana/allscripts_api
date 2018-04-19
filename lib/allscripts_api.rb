@@ -3,6 +3,8 @@
 require "allscripts_api/configuration"
 require "allscripts_api/magic_params"
 require "allscripts_api/named_magic_methods"
+require "allscripts_api/ordering_methods"
+require "allscripts_api/order"
 require "allscripts_api/client"
 require "allscripts_api/version"
 
