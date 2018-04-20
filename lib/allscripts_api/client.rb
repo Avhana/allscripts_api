@@ -6,6 +6,7 @@ module AllscriptsApi
   # Client serves as an entry point for making calls
   class Client
     include AllscriptsApi::NamedMagicMethods
+    include AllscriptsApi::OrderingMethods
     attr_reader :adapter, :unity_url, :app_name, :token
     attr_writer :sso_token
 
@@ -86,7 +87,7 @@ module AllscriptsApi
           req.url(full_path)
           req.body = body
         end
-
+      binding.pry
       read_magic_response(response)
     end
 

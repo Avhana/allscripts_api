@@ -14,6 +14,7 @@ module AllscriptsApi
     #
     # xml can be constructed with `Allscripts::Order.build_xml`
     #
+    # @param patient_id [String]
     # @param xml [String] xml containing saveorderxml fields and values
     # @param order_category [String] one of AdministeredMedication,
     # Immunization, InstructionOrder, ProcedureOrder,
@@ -24,10 +25,11 @@ module AllscriptsApi
     # @param trans_id [String|Nil] the original OrderID,
     # necessary when updating a past order
     # @return ...
-    def save_order(xml, order_category, dictionary_id,
+    def save_order(patient_id, xml, order_category, dictionary_id,
                    problem_id = nil, trans_id = nil)
       params = MagicParams.format(
         user_id: @allscripts_username,
+        patient_id: patient_id,
         parameter1: xml,
         parameter2: order_category,
         parameter3: dictionary_id,

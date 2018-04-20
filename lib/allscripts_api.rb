@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require "nokogiri"
 require "allscripts_api/configuration"
 require "allscripts_api/magic_params"
 require "allscripts_api/named_magic_methods"

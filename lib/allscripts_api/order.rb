@@ -17,7 +17,7 @@ module AllscriptsApi
         builder.field("id" => "orderscheduleending", "value" => date)
         builder.field("id" => "orderscheduleendingafter", "value" => "")
         builder.field("id" => "orderperformingcomment", "value" => "")
-        builder.field("id" => "ordercommunicatedby", "value" => 11) # hardcoded
+        builder.field("id" => "ordercommunicatedby", "value" => 11) # hard coded
         builder.field("id" => "orderorderedby", "value" => emr_user_id)
         builder.field("id" => "ordermanagedby", "value" => emr_user_id)
         builder.field("id" => "ordersupervisedby", "value" => "")
