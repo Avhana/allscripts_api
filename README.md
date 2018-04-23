@@ -1,5 +1,5 @@
 # AllscriptsApi, an Allscripts Unity Client
-
+[![Gem Version](https://badge.fury.io/rb/allscripts_api.svg)](https://badge.fury.io/rb/allscripts_api)
 [![Coverage Status](https://coveralls.io/repos/github/Avhana/allscripts_api/badge.svg?branch=master)](https://coveralls.io/github/Avhana/allscripts_api?branch=master)
 [![Build Status](https://travis-ci.org/Avhana/allscripts_api.svg?branch=master)](https://travis-ci.org/Avhana/allscripts_api)
 [![Inline docs](http://inch-ci.org/github/Avhana/allscripts_api.svg?branch=master&style=shields)](http://inch-ci.org/github/Avhana/allscripts_api)
