@@ -150,6 +150,24 @@ module AllscriptsApi
       results["getscheduleinfo"]
     end
 
+    def get_encounter_list(patient_id = "", encounter_type = "",
+                           when_or_limit = "", nostradamus = 0,
+                           show_past_flag = "Y",
+                           billing_provider_user_name = "")
+      params =
+        MagicParams.format(
+          user_id: @allscripts_username,
+          patient_id: patient_id,
+          parameter1: encounter_type, # from Encounter_Type_DE
+          parameter2: when_or_limit,
+          parameter3: nostradamus,
+          parameter4: show_past_flag,
+          parameter5: billing_provider_user_name,
+        )
+      results = magic("GetEncounterList", magic_params: params)
+      results["getencounterlistinfo"]
+    end
+
     # a wrapper around GetListOfDictionaries, which returns
     # list of all dictionaries
     #

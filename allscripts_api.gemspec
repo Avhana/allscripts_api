@@ -23,12 +23,16 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "faraday", ">= 0.12.2"
+  spec.add_development_dependency "awesome_print"
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "coveralls"
   spec.add_development_dependency "nokogiri"
   spec.add_development_dependency "pronto"
   spec.add_development_dependency "pronto-rubocop"
   spec.add_development_dependency "pry"
+  spec.add_development_dependency "pry-doc"
+  spec.add_development_dependency "pry-rescue"
+  spec.add_development_dependency "pry-stack_explorer"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "yard", "~> 0.9"

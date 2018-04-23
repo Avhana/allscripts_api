@@ -1,5 +1,8 @@
 require "allscripts_api"
 require "yaml"
+require "awesome_print"
+AwesomePrint.pry!
+AwesomePrint.defaults = { raw: true }
 
 begin
   loaded = ENV["app_name"] && ENV["app_password"] && ENV["unity_url"] && ENV["app_username"]

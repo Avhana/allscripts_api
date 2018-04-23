@@ -1,8 +1,10 @@
 # frozen_string_literal: true
-
+require "nokogiri"
 require "allscripts_api/configuration"
 require "allscripts_api/magic_params"
 require "allscripts_api/named_magic_methods"
+require "allscripts_api/ordering_methods"
+require "allscripts_api/order"
 require "allscripts_api/client"
 require "allscripts_api/version"
 
@@ -36,7 +38,7 @@ module AllscriptsApi
   class << self
     attr_accessor :configuration
     # a method that allows a configuration block to be passed
-    # to {AllscriptsApi::Configuration#new}
+    # to AllscriptsApi::Configuration#new
     # @see AllscriptsApi::Configuration
     def configure
       self.configuration ||= AllscriptsApi::Configuration.new
