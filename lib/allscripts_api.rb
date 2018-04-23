@@ -38,7 +38,7 @@ module AllscriptsApi
   class << self
     attr_accessor :configuration
     # a method that allows a configuration block to be passed
-    # to {AllscriptsApi::Configuration#new}
+    # to AllscriptsApi::Configuration#new
     # @see AllscriptsApi::Configuration
     def configure
       self.configuration ||= AllscriptsApi::Configuration.new

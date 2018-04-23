@@ -5,7 +5,7 @@ RSpec.describe AllscriptsApi::Order do
     end
     
     let(:subject) do 
-      AllscriptsApi::Order.build_xml(1, 2, Date.today)
+      AllscriptsApi::Order.build_xml(3, 82, Date.parse("19-Apr-2018"), 239614)
     end
 
     it "returns formatted SendOrder xml" do

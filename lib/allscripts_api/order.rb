@@ -12,7 +12,7 @@ module AllscriptsApi
     # @param encounter_id [String|Nil] an encounter id, used when
     # ordering to current encounter
     # @return [String] xml formatted for
-    # `AllscriptsApi::OrderingMEthods.save_order`
+    # {AllscriptsApi::OrderingMethods#save_order}
     def self.build_xml(site_id, emr_user_id, order_date, encounter_id = "")
       date = order_date.strftime("%d-%b-%Y")
       builder = Nokogiri::XML::Builder.new

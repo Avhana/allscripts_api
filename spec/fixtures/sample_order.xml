@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <saveorderxml>
   <field id="ordershowonorderlist" value="Y"/>
-  <field id="orderlocation" value="1"/>
+  <field id="orderlocation" value="3"/>
   <field id="ordertobedone" value="19-Apr-2018"/>
   <field id="orderpriority" value="2"/>
   <field id="orderschedulefreetext" value=""/>
@@ -12,8 +12,8 @@
   <field id="orderscheduleendingafter" value=""/>
   <field id="orderperformingcomment" value=""/>
   <field id="ordercommunicatedby" value="11"/>
-  <field id="orderorderedby" value="2"/>
-  <field id="ordermanagedby" value="2"/>
+  <field id="orderorderedby" value="82"/>
+  <field id="ordermanagedby" value="82"/>
   <field id="ordersupervisedby" value=""/>
   <field id="orderciteresult" value=""/>
   <field id="orderannotation" value=""/>
@@ -22,7 +22,7 @@
   <field id="orderdeferralinterval" value="0"/>
   <field id="orderdeferralunit" value="Days"/>
   <field id="orderstatusreason" value=""/>
-  <field id="encounter" value=""/>
+  <field id="encounter" value="239614"/>
   <orderlinkedproblems/>
   <clinicalquestions/>
 </saveorderxml>

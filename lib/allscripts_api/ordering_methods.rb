@@ -4,7 +4,7 @@ module AllscriptsApi
   # A collection convenience methods for ordering that map
   # to Allscripts magic actions. Some of these methods
   # wrap multiple actions. These methods are included
-  # in `AllscriptsApi::Client` and can be accessed from
+  # in {AllscriptsApi::Client} and can be accessed from
   # instances of that class.
   module OrderingMethods
     # a wrapper around SaveOrder, which save and order of the
@@ -12,7 +12,7 @@ module AllscriptsApi
     # Immunization, InstructionOrder, ProcedureOrder,
     # Referral, SuppliesOrder.
     #
-    # xml can be constructed with `Allscripts::Order.build_xml`
+    # xml can be constructed with {AllscriptsApi::Order.build_xml}
     #
     # @param patient_id [String]
     # @param xml [String] xml containing saveorderxml fields and values
