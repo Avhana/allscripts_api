@@ -1,5 +1,18 @@
+# frozen_string_literal: true
+
 module AllscriptsApi
+  # A value object wrapped around a `Nokogiri::XML::Builder` DSL that builds
+  # properly formatted XML for `AllscriptsApi::OrderingMEthods.save_order`
   class Order
+    # Builder method for returning XML
+    #
+    # @param site_id [String] the id for the Allscripts install site
+    # @param emr_user_id [String] the provider's Allscripts id
+    # @param order_date [DateTime] a date for the order (Typically today)
+    # @param encounter_id [String|Nil] an encounter id, used when
+    # ordering to current encounter
+    # @return [String] xml formatted for
+    # `AllscriptsApi::OrderingMEthods.save_order`
     def self.build_xml(site_id, emr_user_id, order_date, encounter_id = "")
       date = order_date.strftime("%d-%b-%Y")
       builder = Nokogiri::XML::Builder.new

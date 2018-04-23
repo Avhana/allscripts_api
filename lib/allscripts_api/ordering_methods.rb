@@ -19,12 +19,12 @@ module AllscriptsApi
     # @param order_category [String] one of AdministeredMedication,
     # Immunization, InstructionOrder, ProcedureOrder,
     # Referral, SuppliesOrder.
-    # @param dictionary_id [String] id of the dictionary from SearchOrder
+    # @param dictionary_id [String] id of the dictionary from SearchOrder TODO: look into how to doc this better
     # @param problem_id [String|Nil] problem to associate with the order,
     # may be passed in as part of the xml
     # @param trans_id [String|Nil] the original OrderID,
     # necessary when updating a past order
-    # @return ...
+    # @return [Hash|MagicError] order confirmation or error
     def save_order(patient_id, xml, order_category, dictionary_id,
                    problem_id = nil, trans_id = nil)
       params = MagicParams.format(

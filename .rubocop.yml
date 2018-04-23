@@ -17,6 +17,12 @@ Style/AccessorMethodName:
 # Bumbing the max from 10 to 15 allows magic params to work nicely
 Metrics/MethodLength:
   Max: 15
+  Exclude:
+    - "lib/allscripts_api/order.rb"
 # Bumbing the max from 5 to 7 allows magic params to work nicely
 Metrics/ParameterLists:
   Max: 7
+
+Metrics/AbcSize:
+  Exclude:
+    - "lib/allscripts_api/order.rb"

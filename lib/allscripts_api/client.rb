@@ -87,7 +87,6 @@ module AllscriptsApi
           req.url(full_path)
           req.body = body
         end
-      binding.pry
       read_magic_response(response)
     end
 
