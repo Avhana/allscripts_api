@@ -100,6 +100,19 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 
+  describe "#get_patient_full", skip: @if_no_secrets do
+    let(:subject) { @client.get_patient_full(patient_id) }
+    context "by patient id" do
+      let(:patient_id) { 31 }
+
+      it "fetches patient demographic info for specified patient" do
+        subject
+        expect(subject).to_not be_nil
+        expect(subject[0].keys).to include("ZipCode")
+      end
+    end
+  end
+
   describe "#get_patient_problems", skip: @if_no_secrets do
     let(:subject) { @client.get_patient_problems(patient_id) }
     context "by patient id only" do
