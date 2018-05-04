@@ -104,6 +104,27 @@ module AllscriptsApi
       results["getpatientinfo"]
     end
 
+    # gets patient's demographic info, insurance, guarantor, and PCP info
+    # Note that this method is litely to return blank data sets 
+    # for invalid IDs rather than raising an error
+    #
+    # @param patient_id [String] patient id
+    # @param mrn [String|nil] medical record number, if patient id is unknown
+    # @parma order_id [String|nil] optionally used to get info for a secific
+    # patient order
+    # @return [String, AllscriptsApi::MagicError] patient demographics
+    def get_patient_full(patient_id, mrn = nil, order_id = nil)
+      params =
+        MagicParams.format(
+          user_id: @allscripts_username,
+          patient_id: patient_id,
+          parameter1: mrn,
+          parameter2: order_id
+        )
+      results = magic("GetPatientFull", magic_params: params)
+      results["getpatientfullinfo"]
+    end
+
     # a wrapper around GetPatientProblems
     #
     # @param patient_id [String] patient id
