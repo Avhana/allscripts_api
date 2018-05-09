@@ -1,6 +1,7 @@
 require "allscripts_api"
 require "yaml"
 require "awesome_print"
+require "base64"
 AwesomePrint.pry!
 AwesomePrint.defaults = { raw: true }
 
@@ -24,4 +25,12 @@ def bc
   client.get_user_authentication("jmedici", "password01")
 
   client
+end
+
+def pdf
+  File.open("spec/fixtures/hba1c_sample.pdf").read
+end
+
+def encoded_pdf
+  Base64.encode64(pdf)
 end
