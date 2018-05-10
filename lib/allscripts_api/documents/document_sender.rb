@@ -6,7 +6,24 @@ module AllscriptsApi
     # {AllscriptsApi::Documents::DocumentMethods#save_document_image}
     # to handle the 2 step document image saving process
     class DocumentSender
+      # rubocop:disable LineLength
       # The new method sets up eerything needed to run {#send_document}
+      #
+      # @example Usage Example
+      #   document_params =
+      #     {
+      #       bytes_read: "0",
+      #       b_done_upload: false,
+      #       document_var: "",
+      #       patient_id: 19,
+      #       owner_code: "TW0001",
+      #       first_name: "Allison",
+      #       last_name: "Allscripts",
+      #       document_type: "sEKG",
+      #       organization_name: "New World Health"
+      #     }
+      #   ds = AllscriptsApi::Documents::DocumentSender.new(client, pdf, "test.pdf", document_params)
+      #   ds.send_document
       #
       # @param client [AllscriptsApi::Client] pass in an authorized client
       # @param document [String] the string contents of the pdf to be saved
@@ -14,6 +31,7 @@ module AllscriptsApi
       # @param params [Hash] a hash of params for use in saving a document
       # @see {AllscriptsApi::Dpcuments::DocumentSender} for details
       # @return [AllscriptsApi::Documents::DocumentSender]
+      # rubocop:enable LineLength
       def initialize(client, document, file_name, params)
         @params = params
         @patient_id = @params[:patient_id]
@@ -34,7 +52,7 @@ module AllscriptsApi
           @client.save_document_image(@patient_id,
                                       first_step_xml, @document)
         @params[:b_done_upload] = "true"
-        @params[document_var] = results[0]["documentVar"]
+        @params[:document_var] = results[0]["documentVar"]
         second_step_xml =
           Documents::Document.build_xml(@file_name, "i", @params)
         @client.save_document_image(@patient_id,

@@ -2,7 +2,7 @@ AllCops:
   Exclude:
     - "bin/*"
     - .pryrc
-    - "spec/*"
+    - "spec/**/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -31,6 +31,7 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Exclude:
+    -
     - "lib/allscripts_api/documents/document.rb"
 
 Metrics/LineLength:

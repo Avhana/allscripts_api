@@ -14,7 +14,7 @@ module AllscriptsApi
         missing_keys = required_params - params.keys
         unless missing_keys.empty?
           raise MissingRequiredParamsError,
-                "#{missing_keys} are required for this method."
+                "The key(s) #{missing_keys} is/are required for this method."
         end
       end
     end

@@ -20,11 +20,11 @@ module AllscriptsApi
       # params may look like the following, all of which are required:
       # @option params [String] :bytes_read number of bytes in the chunk (use 0 for 1 big chunk)
       # @option params [String] :b_done_upload should be passed in as false,
-      # @option params [String] :document_var "",
-      # @option params [String] :patient_id 19,
-      # @option params [String] :owner_code "TW0001",
-      # @option params [String] :first_name "Allison",
-      # @option params [String] :last_name "Allscripts",
+      # @option params [String] :document_var should be empty unless you are saving or updating
+      # @option params [String] :patient_id
+      # @option params [String] :owner_code  EntryCode value from GetProvider
+      # @option params [String] :first_name patient first name
+      # @option params [String] :last_name patient last name
       # @option params [String] :document_type document_type_de entrycode from value GetDictionary, for example, "sEKG"
       # @option params [String] :organization_name  the org's name, e.g. "New World Health"
       # @option params [String] :encounter_id  defaults to 0 to open a new encounter

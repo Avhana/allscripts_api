@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+  <item name="documentCommand" value="i"/>
+  <item name="documentType" value="sEKG"/>
+  <item name="offset" value="0"/>
+  <item name="bytesRead" value="0"/>
+  <item name="bDoneUpload" value="false"/>
+  <item name="documentVar" value=""/>
+  <item name="documentID" value="0"/>
+  <item name="vendorFileName" value="test.pdf"/>
+  <item name="ahsEncounterDTTM" value="2018-05-10 18:05:30"/>
+  <item name="ahsEncounterID" value="0"/>
+  <item name="ownerCode" value="TW0001"/>
+  <item name="organizationName" value="New World Health"/>
+  <item name="patientFirstName" value="Allison"/>
+  <item name="patientLastName" value="Allscripts"/>
+  <item name="Orientation" value="1"/>
+  <item name="auditCCDASummary" value="N"/>
+</doc>
