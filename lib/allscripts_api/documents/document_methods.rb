@@ -7,12 +7,15 @@ module AllscriptsApi
     # These methods are included in {AllscriptsApi::Client}
     # and can be accessed from instances of that class.
     module DocumentMethods
+      # rubocop:disable LineLength
       # a wrapper around SaveDocumentImage, which saves pdfs to Allscripts
       #
       # @param patient_id [String] patient id
-      # @param document_params [String] XML produced by
-      # {AllscriptsApi::Document.build_xml}
+      # @param document_params [String] XML produced by {AllscriptsApi::Documents::Document.build_xml}
+      # @param document_buffer [String] a byte array of document data for the current chunk.
+      # @param base_64_data [String] Alternative to using the Data parameter. If Data parameter is empty/null, Unity will check for presence of content in Base64Data. Note: In the Parameter1 XML, bytesRead is still the number of document bytes and not the base-64 string length.
       # @return [Hash, MagicError] a confirmation or error
+      # rubocop:Enable LineLength
       def save_document_image(patient_id, document_params,
                               document_buffer = nil, base_64_data = nil)
         params =

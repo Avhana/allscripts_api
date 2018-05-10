@@ -10,6 +10,7 @@ module AllscriptsApi
       # @param required_params [Array<Symbol>]
       # @param params [Hash] params to be validated
       def self.validate_params(required_params, params)
+        # TODO: describe why this works
         missing_keys = required_params - params.keys
         unless missing_keys.empty?
           raise MissingRequiredParamsError,

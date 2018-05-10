@@ -27,6 +27,20 @@ def bc
   client
 end
 
+def document_params 
+  {
+    bytes_read: "0",
+    b_done_upload: false,
+    document_var: "",
+    patient_id: 19,
+    owner_code: "TW0001",
+    first_name: "Allison",
+    last_name: "Allscripts",
+    document_type: "sEKG",   #document_type_de.entrycode value GetDictionary
+    organization_name: "New World Health"
+  }
+end
+
 def pdf
   File.open("spec/fixtures/hba1c_sample.pdf").read
 end
