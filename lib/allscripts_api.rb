@@ -1,10 +1,13 @@
 # frozen_string_literal: true
+
 require "nokogiri"
 require "allscripts_api/configuration"
+require "allscripts_api/utilities/validator"
 require "allscripts_api/magic_params"
 require "allscripts_api/named_magic_methods"
 require "allscripts_api/ordering_methods"
 require "allscripts_api/order"
+require "allscripts_api/documents"
 require "allscripts_api/client"
 require "allscripts_api/version"
 
@@ -16,6 +19,10 @@ module AllscriptsApi
 
   # Error raised whenever Unity's '/GetToken' call fails or returns an error.
   class GetTokenError < RuntimeError
+  end
+
+  # Error raised when required params are missing.
+  class MissingRequiredParamsError < RuntimeError
   end
 
   # Error raised if AllscriptsApi.connect is called without configuring

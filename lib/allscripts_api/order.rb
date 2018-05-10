@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 module AllscriptsApi
-  # A value object wrapped around a `Nokogiri::XML::Builder` DSL that builds
-  # properly formatted XML for `AllscriptsApi::OrderingMEthods.save_order`
+  # A value object wrapped around a Nokogiri::XML::Builder DSL that builds
+  # properly formatted XML for {AllscriptsApi::OrderingMethods#save_order}
+  # @see https://www.rubydoc.info/github/sparklemotion/nokogiri/Nokogiri/XML/Builder
   class Order
     # Builder method for returning XML
     #

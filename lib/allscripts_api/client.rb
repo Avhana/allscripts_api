@@ -7,6 +7,7 @@ module AllscriptsApi
   class Client
     include AllscriptsApi::NamedMagicMethods
     include AllscriptsApi::OrderingMethods
+    include AllscriptsApi::Documents::DocumentMethods
     attr_reader :adapter, :unity_url, :app_name, :token
     attr_writer :sso_token
 

@@ -105,12 +105,12 @@ module AllscriptsApi
     end
 
     # gets patient's demographic info, insurance, guarantor, and PCP info
-    # Note that this method is litely to return blank data sets 
+    # Note that this method is litely to return blank data sets
     # for invalid IDs rather than raising an error
     #
     # @param patient_id [String] patient id
     # @param mrn [String|nil] medical record number, if patient id is unknown
-    # @parma order_id [String|nil] optionally used to get info for a secific
+    # @param order_id [String|nil] optionally used to get info for a secific
     # patient order
     # @return [String, AllscriptsApi::MagicError] patient demographics
     def get_patient_full(patient_id, mrn = nil, order_id = nil)
@@ -159,8 +159,7 @@ module AllscriptsApi
     #
     # @param start_date [Date] start date inclusive
     # @param end_date [Date] end date inclusive
-    # @return [Array<Hash>, Array, MagicError] a list of scheduled appointments,
-    # an empty array, or an error
+    # @return [Array<Hash>, Array, MagicError] a list of scheduled appointments, an empty array, or an error
     def get_schedule(start_date, end_date)
       params =
         MagicParams.format(
@@ -171,6 +170,15 @@ module AllscriptsApi
       results["getscheduleinfo"]
     end
 
+    # a wrapper around GetEncounterList
+    #
+    # @param patient_id [String] patient id
+    # @param encounter_type [String] encounter type to filter on from Encounter_Type_DE
+    # @param when_or_limit [String] filter by specified date
+    # @param nostradamus [String] how many days to look into the future. Defaults to 0. 
+    # @param show_past_flag [String] show previous encounters, "Y" or "N". Defaults to Y
+    # @param billing_provider_user_name [String] filter by user name (if specified)
+    # @return [Array<Hash>, Array, MagicError] a list of encounters
     def get_encounter_list(patient_id = "", encounter_type = "",
                            when_or_limit = "", nostradamus = 0,
                            show_past_flag = "Y",

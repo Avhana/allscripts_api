@@ -1,6 +1,7 @@
 require "allscripts_api"
 require "yaml"
 require "awesome_print"
+require "base64"
 AwesomePrint.pry!
 AwesomePrint.defaults = { raw: true }
 
@@ -24,4 +25,26 @@ def bc
   client.get_user_authentication("jmedici", "password01")
 
   client
+end
+
+def document_params 
+  {
+    bytes_read: "0",
+    b_done_upload: false,
+    document_var: "",
+    patient_id: 19,
+    owner_code: "TW0001",
+    first_name: "Allison",
+    last_name: "Allscripts",
+    document_type: "sEKG",   #document_type_de.entrycode value GetDictionary
+    organization_name: "New World Health"
+  }
+end
+
+def pdf
+  File.open("spec/fixtures/hba1c_sample.pdf").read
+end
+
+def encoded_pdf
+  Base64.encode64(pdf)
 end

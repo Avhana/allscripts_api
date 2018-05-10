@@ -2,7 +2,7 @@ AllCops:
   Exclude:
     - "bin/*"
     - .pryrc
-    - "spec/*"
+    - "spec/**/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -19,6 +19,7 @@ Metrics/MethodLength:
   Max: 15
   Exclude:
     - "lib/allscripts_api/order.rb"
+    - "lib/allscripts_api/documents/document.rb"
 # Bumbing the max from 5 to 7 allows magic params to work nicely
 Metrics/ParameterLists:
   Max: 7
@@ -26,3 +27,12 @@ Metrics/ParameterLists:
 Metrics/AbcSize:
   Exclude:
     - "lib/allscripts_api/order.rb"
+    - "lib/allscripts_api/documents/document.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    -
+    - "lib/allscripts_api/documents/document.rb"
+
+Metrics/LineLength:
+  Max: 90
