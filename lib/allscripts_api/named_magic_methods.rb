@@ -9,9 +9,9 @@ module AllscriptsApi
     # a wrapper around SearchPatients
     #
     # @param search_string [String] may be a name, birthdate
-    # partial address, or other PHI
+    #   partial address, or other PHI
     # @return [Array<Hash>, Array, MagicError] a list of found patients,
-    # an empty array, or an error
+    #   an empty array, or an error
     def search_patients(search_string)
       params =
         MagicParams.format(
@@ -20,6 +20,21 @@ module AllscriptsApi
         )
       results = magic("SearchPatients", magic_params: params)
       results["searchpatientsinfo"]
+    end
+
+    # a wrapper around GetProvider
+    #
+    # @param provider_id [String] optional Allscripts user id
+    # @param user_name [String] optional Allscripts user_name
+    # @return [Array<Hash>, Array, MagicError] a list of providers
+    def get_provider(provider_id = nil, user_name = nil)
+      params =
+        MagicParams.format(
+          parameter1: provider_id,
+          parameter2: user_name
+        )
+      results = magic("GetProvider", magic_params: params)
+      results["getproviderinfo"]
     end
 
     # gets the CCDA documents for the specified patient and encounter

@@ -33,6 +33,27 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 
+  describe "#get_provider", skip: @if_no_secrets do
+    let(:subject) { @client.get_provider(id, user_name) }
+    context "by user_name, with results" do
+      let(:id) { "" }
+      let(:user_name) { "jmedici" }
+      it "finds records for jmedici" do
+        subject
+        expect(subject[0]["FirstName"]).to eq("James")
+      end
+    end
+
+    context "with no params" do
+      let(:id) { "" }
+      let(:user_name) { "" }
+
+      it "raises an error" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
+      end
+    end
+  end
+
   describe "#get_ccda", skip: @if_no_secrets do
     let(:subject) { @client.get_ccda(patient_id, encounter_id) }
     context "by patient id and encounter id" do
