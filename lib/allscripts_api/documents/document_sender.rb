@@ -46,17 +46,16 @@ module AllscriptsApi
       # @return [Hash, MagicError] a confirmation or error
       def send_document
         @params[:b_done_upload] = "false"
-        first_step_xml =
-          Documents::Document.build_xml(@file_name, "i", @params)
+        doc_builder_params = [@file_name, "i", @params]
         results =
           @client.save_document_image(@patient_id,
-                                      first_step_xml, @document)
+                                      doc_builder_params, nil, @document)
         @params[:b_done_upload] = "true"
         @params[:document_var] = results[0]["documentVar"]
         second_step_xml =
           Documents::Document.build_xml(@file_name, "i", @params)
         @client.save_document_image(@patient_id,
-                                    second_step_xml, @document)
+                                    second_step_xml, nil, @document)
       end
     end
   end

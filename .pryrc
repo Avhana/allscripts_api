@@ -27,7 +27,7 @@ def bc
   client
 end
 
-def document_params 
+def document_params
   {
     bytes_read: "0",
     b_done_upload: false,
@@ -36,7 +36,7 @@ def document_params
     owner_code: "TW0001",
     first_name: "Allison",
     last_name: "Allscripts",
-    document_type: "sEKG",   #document_type_de.entrycode value GetDictionary
+    document_type: "WoundRpt",   #document_type_de.entrycode value GetDictionary
     organization_name: "New World Health"
   }
 end
