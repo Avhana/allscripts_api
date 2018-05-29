@@ -18,7 +18,7 @@ module AllscriptsApi
       # @param command [String] i for insert, e for delete (entered in error), u for update
       # @param params [Hash] any other params you may wish to pass to the api
       # params may look like the following, all of which are required:
-      # @option params [String] :bytes_read number of bytes in the chunk (use 0 for 1 big chunk)
+      # @option params [String] :bytes_read number of bytes in the chunk (pdf.bytes.length is nice for this if using one big chunk)
       # @option params [String] :b_done_upload should be passed in as false,
       # @option params [String] :document_var should be empty unless you are saving or updating
       # @option params [String] :patient_id
