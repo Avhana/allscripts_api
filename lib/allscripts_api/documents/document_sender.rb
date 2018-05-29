@@ -29,7 +29,7 @@ module AllscriptsApi
       # @param document [String] the string contents of the pdf to be saved
       # @param file_name [String] the name of the file to be saved, usually ending in .pdf
       # @param params [Hash] a hash of params for use in saving a document
-      # @see {AllscriptsApi::Dpcuments::DocumentSender} for details
+      # @see {AllscriptsApi::Documents::DocumentSender} for details
       # @return [AllscriptsApi::Documents::DocumentSender]
       # rubocop:enable LineLength
       def initialize(client, document, file_name, params)
