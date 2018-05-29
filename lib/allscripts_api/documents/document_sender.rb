@@ -5,6 +5,7 @@ module AllscriptsApi
     # Wraps {AllscriptsApi::Documents::Document.build_xml} and
     # {AllscriptsApi::Documents::DocumentMethods#save_document_image}
     # to handle the 2 step document image saving process
+    # The DocumentSender is set up to send the document as one big chunk
     class DocumentSender
       # rubocop:disable LineLength
       # The new method sets up eerything needed to run {#send_document}
@@ -12,7 +13,7 @@ module AllscriptsApi
       # @example Usage Example
       #   document_params =
       #     {
-      #       bytes_read: "0",
+      #       bytes_read: pdf.bytes.length,
       #       b_done_upload: false,
       #       document_var: "",
       #       patient_id: 19,
