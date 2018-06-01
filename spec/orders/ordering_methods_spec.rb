@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe AllscriptsApi::OrderingMethods do
+RSpec.describe AllscriptsApi::Orders::OrderingMethods do
   # Note: skip: @if_no_secrets causes a describe block to be skipped if
   # the environment isn't properly set up.
   before do

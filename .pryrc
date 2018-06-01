@@ -27,9 +27,9 @@ def bc
   client
 end
 
-def document_params
+def document_params(pdf)
   {
-    bytes_read: "0",
+    bytes_read: pdf.bytes.length,
     b_done_upload: false,
     document_var: "",
     patient_id: 19,

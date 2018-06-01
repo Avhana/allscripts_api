@@ -3,7 +3,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/Avhana/allscripts_api/badge.svg?branch=master)](https://coveralls.io/github/Avhana/allscripts_api?branch=master)
 [![Build Status](https://travis-ci.org/Avhana/allscripts_api.svg?branch=master)](https://travis-ci.org/Avhana/allscripts_api)
 [![Inline docs](http://inch-ci.org/github/Avhana/allscripts_api.svg?branch=master&style=shields)](http://inch-ci.org/github/Avhana/allscripts_api)
-[![Dependency Status](https://gemnasium.com/badges/github.com/Avhana/allscripts_api.svg)](https://gemnasium.com/github.com/Avhana/allscripts_api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/9889f5255914a5fcbeb5/maintainability)](https://codeclimate.com/github/Avhana/allscripts_api/maintainability)
 [![security](https://hakiri.io/github/Avhana/allscripts_api/master.svg)](https://hakiri.io/github/Avhana/allscripts_api/master)
 
