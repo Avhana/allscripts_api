@@ -29,6 +29,39 @@ module AllscriptsApi
         results = magic("SaveDocumentImage", magic_params: params)
         results["savedocumentimageinfo"]
       end
+
+      # gets the CCDA documents for the specified patient and encounter
+      #
+      # @param patient_id [String] patient id
+      # @param encounter_id [String] encounter id from which to generate the CCDA
+      # @param org_id [String] specifies the organization, by default Unity
+      # uses the organization for the specified user
+      # @param app_group [String] defaults to "TouchWorks"
+      # @param referral_text [String] contents of ReferralText are appended
+      # @param site_id [String] site id
+      # @param document_type [String] document type defaults to CCDACCD,
+      # CCDACCD (Default) - Returns the Continuity of Care Document. This
+      # is the default behavior if nothing is passed in.
+      # CCDASOC - Returns the Summary of Care Document
+      # CCDACS - Returns the Clinical Summary Document (Visit Summary).
+      # @return [String, AllscriptsApi::MagicError] ccda for patient
+      def get_ccda(patient_id, encounter_id, org_id = nil,
+                   app_group = nil, referral_text = nil,
+                   site_id = nil, document_type = "CCDACCD")
+        params =
+          MagicParams.format(
+            user_id: @allscripts_username,
+            patient_id: patient_id,
+            parameter1: encounter_id,
+            parameter2: org_id,
+            parameter3: app_group,
+            parameter4: referral_text,
+            parameter5: site_id,
+            parameter6: document_type
+          )
+        results = magic("GetCCDA", magic_params: params)
+        results["getccdainfo"][0]["ccdaxml"]
+      end
     end
   end
 end

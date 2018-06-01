@@ -6,7 +6,9 @@ module AllscriptsApi
   # Client serves as an entry point for making calls
   class Client
     include AllscriptsApi::NamedMagicMethods
-    include AllscriptsApi::OrderingMethods
+    include AllscriptsApi::Orders::OrderingMethods
+    include AllscriptsApi::Patients::PatientMethods
+    include AllscriptsApi::Demographics::DemographicsMethods
     include AllscriptsApi::Documents::DocumentMethods
     attr_reader :adapter, :unity_url, :app_name, :token
     attr_writer :sso_token
