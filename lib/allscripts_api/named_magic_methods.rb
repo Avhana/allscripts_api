@@ -50,6 +50,24 @@ module AllscriptsApi
       results["getpatientproblemsinfo"]
     end
 
+
+    # a wrapper around GetResults
+    #
+    # @param patient_id [String] patient id
+    # @param since [String] Specify a date/time combination to return only results that have been modified on or after. For example, 2014-01-01 or 2015-01-14 08:44:28.563. Defaults to nil
+    # @return [Array<Hash>, Array, MagicError] a list of found results (lab/imaging),
+    # an empty array, or an error
+    def get_results(patient_id,
+                    since = nil)
+      params = MagicParams.format(
+        user_id: @allscripts_username,
+        patient_id: patient_id,
+        parameter1: since,
+      )
+      results = magic("GetResults", magic_params: params)
+      results["getresultsinfo"]
+    end
+
     # a wrapper around GetSchedule, returns appointments scheduled under the
     # the user for a given date range
     #
