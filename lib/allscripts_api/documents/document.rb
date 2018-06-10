@@ -33,7 +33,7 @@ module AllscriptsApi
       # @return [String] xml formatted for {AllscriptsApi::OrderingMethods#save_document_image}
       # on required and optional params
       # rubocop:enable LineLength
-      def self.build_xml(file_name, command = "i", params)
+      def self.build_xml(file_name, command, params, chunk_params)
         Utilities::Validator.validate_params(REQUIRED_PARAMS, params)
         encounter_date_time = DateTime.now.strftime("%Y-%m-%d %H:%m:%S")
         builder = Nokogiri::XML::Builder.new
@@ -47,9 +47,10 @@ module AllscriptsApi
           # file offset of the current chunk to upload
           # not yet supported by allscripts_api gem
           builder.item("name" => "offset",
-                       "value" => "0")
+                       "value" => (chunk_params[:offset] || "0"))
           # how many bytes in current chunk
-          builder.item("name" => "bytesRead", "value" => params[:bytes_read])
+          builder.item("name" => "bytesRead",
+                       "value" => chunk_params[:chunk])
           # false until the last chunk, then call SaveDocumentImage
           # once more with true
           builder.item("name" => "bDoneUpload",
@@ -57,7 +58,7 @@ module AllscriptsApi
           # empty for first chunk, which will then return the GUID to use for
           # subsequent calls
           builder.item("name" => "documentVar",
-                       "value" => params[:document_var] || "")
+                       "value" => chunk_params[:document_var] || params[:document_var] || "")
           # documentid only applies to updates
           # not yet supported by allscripts_api gem
           builder.item("name" => "documentID",

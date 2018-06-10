@@ -36,7 +36,7 @@ def document_params(pdf)
     owner_code: "TW0001",
     first_name: "Allison",
     last_name: "Allscripts",
-    document_type: "gwn_otfm",   #document_type_de.entrycode value GetDictionary
+    document_type: "WoundRpt",   #document_type_de.entrycode value GetDictionary
     organization_name: "New World Health"
   }
 end
