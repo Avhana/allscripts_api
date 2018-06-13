@@ -53,6 +53,32 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 
+  describe "#get_results", skip: @if_no_secrets do
+    let(:subject) { @client.get_results(patient_id) }
+    context "by patient id only" do
+      let(:patient_id) { 31 }
+      it "fetches problems for the specified patient" do
+        subject
+        expect(subject.length).to be >= 1
+        expect(subject.map { |prob| prob["Name"] }).to include("INR")
+      end
+    end
+
+    context "with no results" do
+      let(:patient_id) { 0 }
+      it "returns an empty list if patient is not recognized by Allscripts" do
+        expect(subject.length).to eq(0)
+      end
+    end
+
+    context "with bad patient" do
+      let(:patient_id) { "asdfsd" }
+      it "raises an error when Allscripts returns an id error" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
+      end
+    end
+  end
+
   describe "#get_schedule", skip: @if_no_secrets do
     let(:subject) { @client.get_schedule(start_date, end_date) }
     context "with results" do
@@ -119,4 +145,3 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 end
-

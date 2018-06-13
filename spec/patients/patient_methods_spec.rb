@@ -46,17 +46,16 @@ RSpec.describe AllscriptsApi::Patients::PatientMethods do
       end
     end
 
-    context "without an invalid patient id" do
+    context "without a valid patient id" do
       let(:patient_id) { nil }
       let(:date) { DateTime.now }
 
       it "returns a status error without a valid patient id" do
         status_error = {
-        "status" => "Error converting data type varchar to numeric."
+          "status" => "Error converting data type varchar to numeric."
         }
         expect(subject[0]).to eq(status_error)
       end
     end
   end
 end
-
