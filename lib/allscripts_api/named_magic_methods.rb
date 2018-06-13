@@ -54,7 +54,7 @@ module AllscriptsApi
     # a wrapper around GetResults
     #
     # @param patient_id [String] patient id
-    # @param since [String] Specify a date/time combination to return only results that have been modified on or after. For example, 2014-01-01 or 2015-01-14 08:44:28.563. Defaults to nil
+    # @param since [String] Specify a date/time combination to return only results that have been modified on or after that date/time. For example, 2014-01-01 or 2015-01-14 08:44:28.563. Defaults to nil
     # @return [Array<Hash>, Array, MagicError] a list of found results (lab/imaging),
     # an empty array, or an error
     def get_results(patient_id,
@@ -62,7 +62,7 @@ module AllscriptsApi
       params = MagicParams.format(
         user_id: @allscripts_username,
         patient_id: patient_id,
-        parameter1: since,
+        parameter1: since
       )
       results = magic("GetResults", magic_params: params)
       results["getresultsinfo"]
@@ -89,7 +89,7 @@ module AllscriptsApi
     # @param patient_id [String] patient id
     # @param encounter_type [String] encounter type to filter on from Encounter_Type_DE
     # @param when_or_limit [String] filter by specified date
-    # @param nostradamus [String] how many days to look into the future. Defaults to 0. 
+    # @param nostradamus [String] how many days to look into the future. Defaults to 0.
     # @param show_past_flag [String] show previous encounters, "Y" or "N". Defaults to Y
     # @param billing_provider_user_name [String] filter by user name (if specified)
     # @return [Array<Hash>, Array, MagicError] a list of encounters

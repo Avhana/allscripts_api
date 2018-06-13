@@ -66,8 +66,15 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
 
     context "with no results" do
       let(:patient_id) { 0 }
-      it "raises an error when Allscripts returns an id error" do
+      it "returns an empty list if patient is not recognized by Allscripts" do
         expect(subject.length).to eq(0)
+      end
+    end
+
+    context "with bad patient" do
+      let(:patient_id) { "asdfsd" }
+      it "raises an error when Allscripts returns an id error" do
+        expect { subject }.to raise_error(AllscriptsApi::MagicError)
       end
     end
   end
@@ -138,4 +145,3 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 end
-
