@@ -21,6 +21,34 @@ module AllscriptsApi
       results["getproviderinfo"]
     end
 
+    # a wrapper around GetProviders
+    #
+    # @param security_filter [String] optional EntryCode of the Security_Code_DE dictionary for the providers being sought. A list of valid security codes can be obtained from GetDictionary on the Security_Code_DE dictionary.
+    # @param name_filter [String] optional 	If specified, will filter for providers with a lastname or entrycode that match. Defaults to %.
+    # @param show_only_providers_flag [String] optional 		(Y/N) Indicate whether or not to return only users that are also Providers. Defaults to Y.
+    # @param internal_external [String] optional 	I for Internal (User/providers that are internal to the enterprise). E for External (Referring physicians). Defaults to I.
+    # @param ordering_authority [String] optional 	Show only those users with an ordering provider level of X (which is a number)
+    # @param real_provider [String] optional 	Whether an NPI (National Provider ID) is required (Y/N). Y returns only actual providers. Default is N.
+    # @return [Array<Hash>, Array, MagicError] a list of providers
+    def get_providers(security_filter = nil,
+                      name_filter = nil,
+                      show_only_providers_flag = "Y",
+                      internal_external = "I",
+                      ordering_authority = nil,
+                      real_provider = "N")
+      params =
+        MagicParams.format(
+          parameter1: security_filter,
+          parameter2: name_filter,
+          parameter3: show_only_providers_flag,
+          parameter4: internal_external,
+          parameter5: ordering_authority,
+          parameter6: real_provider
+        )
+      results = magic("GetProviders", magic_params: params)
+      results["getprovidersinfo"]
+    end
+
     # a wrapper around GetPatientProblems
     #
     # @param patient_id [String] patient id

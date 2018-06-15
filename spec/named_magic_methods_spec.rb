@@ -34,6 +34,16 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 
+  describe "#get_providers", skip: @if_no_secrets do
+    let(:subject) { @client.get_providers() }
+    context "gets full list of providers" do
+      it "finds records for jmedici" do
+        subject
+        expect(subject.length).to eq(36)
+      end
+    end
+  end
+
   describe "#get_patient_problems", skip: @if_no_secrets do
     let(:subject) { @client.get_patient_problems(patient_id) }
     context "by patient id only" do
