@@ -44,6 +44,7 @@ module AllscriptsApi
           builder.field("id" => "orderdeferralunit", "value" => "Days")
           builder.field("id" => "orderstatusreason", "value" => "")
           builder.field("id" => "encounter", "value" => encounter_id.to_s)
+          builder.field("id" => "orderintorext", "value" => "External/Internal for referral only")
           builder.orderlinkedproblems
           builder.clinicalquestions
         end
