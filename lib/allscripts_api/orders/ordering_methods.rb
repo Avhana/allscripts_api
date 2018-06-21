@@ -13,7 +13,7 @@ module AllscriptsApi
       # Immunization, InstructionOrder, ProcedureOrder,
       # Referral, SuppliesOrder.
       #
-      # xml can be constructed with {AllscriptsApi::Order.build_xml}
+      # xml can be constructed with {AllscriptsApi::Orders::Order.build_xml}
       #
       # @param patient_id [String]
       # @param xml [String] xml containing saveorderxml fields and values
