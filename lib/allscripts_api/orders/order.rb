@@ -9,13 +9,13 @@ module AllscriptsApi
       # Builder method for returning XML
       #
       # @param site_id [String] the id for the Allscripts install site
-      # @param emr_user_id [String] the provider's Allscripts id
+      # @param person_id [String] the provider's Allscripts personid
       # @param order_date [DateTime] a date for the order (Typically today)
       # @param encounter_id [String|Nil] an encounter id, used when
       # ordering to current encounter
       # @return [String] xml formatted for
       # {AllscriptsApi::OrderingMethods#save_order}
-      def self.build_xml(site_id, emr_user_id, order_date, encounter_id = "")
+      def self.build_xml(site_id, person_id, order_date, encounter_id = "")
         date = order_date.strftime("%d-%b-%Y")
         builder = Nokogiri::XML::Builder.new
         builder.saveorderxml do
@@ -33,8 +33,8 @@ module AllscriptsApi
           builder.field("id" => "orderscheduleendingafter", "value" => "")
           builder.field("id" => "orderperformingcomment", "value" => "")
           builder.field("id" => "ordercommunicatedby", "value" => 11) # hard coded
-          builder.field("id" => "orderorderedby", "value" => emr_user_id)
-          builder.field("id" => "ordermanagedby", "value" => emr_user_id)
+          builder.field("id" => "orderorderedby", "value" => person_id)
+          builder.field("id" => "ordermanagedby", "value" => person_id)
           builder.field("id" => "ordersupervisedby", "value" => "")
           builder.field("id" => "orderciteresult", "value" => "")
           builder.field("id" => "orderannotation", "value" => "")
