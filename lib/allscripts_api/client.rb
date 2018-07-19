@@ -24,6 +24,7 @@ module AllscriptsApi
     # @param app_password [String] the app password supplied by Allscripts
     def initialize(url, app_name, app_username, app_password)
       @unity_url = url
+      @token = get_token
       @app_name = app_name
       @username = app_username
       @password = app_password
