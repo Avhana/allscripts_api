@@ -173,9 +173,10 @@ module AllscriptsApi
     # @return [Array<Hash>, Array, MagicError]  local information about the
     # server hosting the Unity webservice.
     def get_server_info
+      binding.pry
       params = MagicParams.format(user_id: @allscripts_username)
       results = magic("GetServerInfo", magic_params: params)
-      results["getserverinfo"]
+      results["getserverinfoinfo"][0] # infoinfo is an Allscript typo
     end
 
     private

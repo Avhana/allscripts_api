@@ -20,7 +20,7 @@ module AllscriptsApi
       #       owner_code: "TW0001",
       #       first_name: "Allison",
       #       last_name: "Allscripts",
-      #       document_type: "sEKG",
+      #       document_type: "sEKG", # Document_Type_DE dictionary
       #       organization_name: "New World Health"
       #     }
       #   ds = AllscriptsApi::Documents::DocumentSender.new(client, pdf, "test.pdf", document_params)

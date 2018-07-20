@@ -50,7 +50,7 @@ module AllscriptsApi
       # @param problem_trans_id [String] problem_header id
       # @return [Array<Hash>, Array, MagicError] a list of encounters
       def get_encounter_list(patient_id, xml_string,
-                             order_trans_id = "0", order_category = "",
+                             order_trans_id = "0", order_category = "ProcedureOrder",
                              problem_id = "", problem_trans_id = "")
         params =
           MagicParams.format(
