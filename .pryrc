@@ -27,6 +27,14 @@ def bc
   client
 end
 
+client =
+  AllscriptsApi::Client.new("https://ubiquityunity.azurewebsites.net",
+                            ENV["app_name"],
+                            "TW151GA" + ":" + ENV["app_username"],
+                            ENV["app_password"])
+client.get_token
+client.get_user_authentication("jmedici", "password01")
+
 def document_params(pdf)
   {
     bytes_read: pdf.bytes.length,
