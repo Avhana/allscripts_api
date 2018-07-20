@@ -44,7 +44,7 @@ module AllscriptsApi
       #
       # @param patient_id [String] patient id
       # @param xml_string [String] xml from build_xml_for_order_workflow method
-      # @param order_trans_id [String] order_activity_header.ID when calling for an existing order.
+      # @param order_trans_id [String] order_activity_header.ID when calling for an existing order
       # @param order_category [String] determines what order field data to send back.
       # @param problem_id [String] problem dictionary id
       # @param problem_trans_id [String] problem_header id
