@@ -6,6 +6,93 @@ module AllscriptsApi
   # in `AllscriptsApi::Client` and can be accessed from
   # instances of that class.
   module NamedMagicMethods
+
+    def self.all_methods(client)
+      providers = client.get_providers
+      if providers
+        puts "get providers success"
+      else
+        puts "get providers failed"
+      end
+      provider = client.get_provider("91")
+      if provider
+        puts "provider success"
+      else
+        puts "get provider failed"
+      end
+      schedule = client.get_schedule(Date.today - 1, Date.today + 2)
+      if schedule
+        puts "schedule success"
+      else
+        puts "get schedule failed"
+      end
+      problems = client.get_patient_problems("94")
+      if problems
+        puts "problems success"
+      else
+        puts "get patient problems failed"
+      end
+      results = client.get_results("94")
+      if results
+        puts "results success"
+      else
+        puts "get results failed"
+      end
+      encounter_list = client.get_encounter_list("94")
+      if encounter_list
+        puts "encounter list success"
+      else
+        puts "encounter list failed"
+      end
+      dictionaries = client.get_list_of_dictionaries
+      if dictionaries
+        puts "get list of dictionaries success"
+      else
+        puts "get list of dictionaries failed"
+      end
+      dictionary = client.get_dictionary("QO_Classification_DE")
+      if dictionary
+        puts "get dictionary success"
+      else
+        puts "get dictionary failed"
+      end
+      authentication = client.get_user_authentication("jmedici", "g2uw$rMvokDFe51i#Qnw")
+      if authentication
+        puts "get user authentication success"
+      else
+        puts "get user authentication failed"
+      end
+      token = client.get_token
+      if token
+        puts "get token success"
+      else
+        puts "get token failed"
+      end
+      # validate_token = client.validate_sso_token(token)
+      # if validate_token
+      #   puts "validate token success"
+      # else
+      #   puts "validate token failed"
+      # end
+      search_patients = client.search_patients("NoteSwift")
+      if search_patients
+        puts "search patients success"
+      else
+        puts "search patients failed"
+      end
+      get_patient = client.get_patient("94")
+      if get_patient
+        puts "get patient success"
+      else
+        puts "get patient failed"
+      end
+      get_patient_full = client.get_patient_full("94")
+      if get_patient_full
+        puts "get patient full success"
+      else
+        puts "get patient full failed"
+      end
+    end
     # a wrapper around GetProvider
     #
     # @param provider_id [String] optional Allscripts user id
