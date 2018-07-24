@@ -24,11 +24,11 @@ module AllscriptsApi
     # a wrapper around GetProviders
     #
     # @param security_filter [String] optional EntryCode of the Security_Code_DE dictionary for the providers being sought. A list of valid security codes can be obtained from GetDictionary on the Security_Code_DE dictionary.
-    # @param name_filter [String] optional 	If specified, will filter for providers with a lastname or entrycode that match. Defaults to %.
-    # @param show_only_providers_flag [String] optional 		(Y/N) Indicate whether or not to return only users that are also Providers. Defaults to Y.
-    # @param internal_external [String] optional 	I for Internal (User/providers that are internal to the enterprise). E for External (Referring physicians). Defaults to I.
-    # @param ordering_authority [String] optional 	Show only those users with an ordering provider level of X (which is a number)
-    # @param real_provider [String] optional 	Whether an NPI (National Provider ID) is required (Y/N). Y returns only actual providers. Default is N.
+    # @param name_filter [String] optional If specified, will filter for providers with a lastname or entrycode that match. Defaults to %.
+    # @param show_only_providers_flag [String] optional (Y/N) Indicate whether or not to return only users that are also Providers. Defaults to Y.
+    # @param internal_external [String] optional I for Internal (User/providers that are internal to the enterprise). E for External (Referring physicians). Defaults to I.
+    # @param ordering_authority [String] optional Show only those users with an ordering provider level of X (which is a number)
+    # @param real_provider [String] optional Whether an NPI (National Provider ID) is required (Y/N). Y returns only actual providers. Default is N.
     # @return [Array<Hash>, Array, MagicError] a list of providers
     def get_providers(security_filter = nil,
                       name_filter = nil,
@@ -164,6 +164,18 @@ module AllscriptsApi
       )
       results = magic("GetDictionary", magic_params: params)
       results["getdictionaryinfo"]
+    end
+
+    # a wrapper around GetServerInfo, which returns
+    # the time zone of the server, unity version and date
+    # and license key
+    #
+    # @return [Array<Hash>, Array, MagicError]  local information about the
+    # server hosting the Unity webservice.
+    def get_server_info
+      params = MagicParams.format(user_id: @allscripts_username)
+      results = magic("GetServerInfo", magic_params: params)
+      results["getserverinfoinfo"][0] # infoinfo is an Allscript typo
     end
 
     private

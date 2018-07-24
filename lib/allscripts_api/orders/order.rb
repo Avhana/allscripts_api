@@ -44,8 +44,36 @@ module AllscriptsApi
           builder.field("id" => "orderdeferralunit", "value" => "Days")
           builder.field("id" => "orderstatusreason", "value" => "")
           builder.field("id" => "encounter", "value" => encounter_id.to_s)
+          builder.field("id" => "orderintorext", "value" => "External/Internal for referral only")
           builder.orderlinkedproblems
           builder.clinicalquestions
+        end
+
+        builder.to_xml
+      end
+
+
+      # Builder for get order workflow xml
+      #
+      # @param order_id [String] order dictionary ID
+      # @param order_trans_id [String] the provider's Allscripts id
+      # @param order_category [DateTime] determines what order field data to send back.
+      # @param encounter_id [String|Nil] an encounter id, used when
+      # ordering to current encounter
+      # @return [String] xml formatted for
+      # {AllscriptsApi::OrderingMethods#save_order}
+      def self.build_xml_for_order_workflow(order_id,
+                                            order_category,
+                                            problem_id = "",
+                                            problem_trans_id = "0",
+                                            order_trans_id = "0")
+        builder = Nokogiri::XML::Builder.new
+        builder.saveorderxml do
+          builder.field("id" => "order_id", "value" => order_id)
+          builder.field("id" => "order_transid", "value" => order_trans_id)
+          builder.field("id" => "order_category", "value" => order_category)
+          builder.field("id" => "problem_id", "value" => problem_id)
+          builder.field("id" => "problem_transid", "value" => problem_trans_id)
         end
 
         builder.to_xml
