@@ -2,7 +2,7 @@
 
 RSpec.describe AllscriptsApi::Client do
   let(:app_name) { "test" }
-  let(:url) { "http://someallscriptsurl.example" }
+  let(:url) { "https://someallscriptsurl.example" }
   let(:username) { "username" }
   let(:password) { "password" }
   let(:subject) do

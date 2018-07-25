@@ -14,7 +14,7 @@ module AllscriptsApi
     attr_writer :sso_token
 
     # hardcoded to use the JSON endpoint
-    ENDPOINT = "/Unity/UnityService.svc/json".freeze
+    ENDPOINT = "/UnityService.svc/json".freeze
 
     # Instantiation of the Client
     #
