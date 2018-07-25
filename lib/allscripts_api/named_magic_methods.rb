@@ -178,6 +178,18 @@ module AllscriptsApi
       results["getserverinfoinfo"][0] # infoinfo is an Allscript typo
     end
 
+    def last_logs(errors_only = "N", show_wand = "N", how_many = 10, start_time = "", end_time = "")
+      params =
+        MagicParams.format(
+          parameter1: errors_only,
+          parameter2: show_wand,
+          parameter3: how_many,
+          parameter4: start_time,
+          parameter5: end_time
+        )
+      results = magic("LastLogs", magic_params: params)
+    end
+
     private
 
     def format_date_range(start_date, end_date)
