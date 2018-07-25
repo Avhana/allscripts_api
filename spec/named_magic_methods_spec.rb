@@ -17,8 +17,8 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     let(:subject) { @client.get_provider(id, user_name) }
     context "by user_name, with results" do
       let(:id) { "" }
-      let(:user_name) { "jmedici" }
-      it "finds records for jmedici" do
+      let(:user_name) { "avhana" }
+      it "finds records for avhana" do
         subject
         expect(subject[0]["FirstName"]).to eq("James")
       end
@@ -37,7 +37,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
   describe "#get_providers", skip: @if_no_secrets do
     let(:subject) { @client.get_providers() }
     context "gets full list of providers" do
-      it "finds records for jmedici" do
+      it "finds records for avhana" do
         subject
         expect(subject.length).to be >= 75
       end

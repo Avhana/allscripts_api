@@ -26,19 +26,19 @@ module AllscriptsApi
       else
         puts "get schedule failed"
       end
-      problems = client.get_patient_problems("94")
+      problems = client.get_patient_problems("20")
       if problems
         puts "problems success"
       else
         puts "get patient problems failed"
       end
-      results = client.get_results("94")
+      results = client.get_results("20")
       if results
         puts "results success"
       else
         puts "get results failed"
       end
-      encounter_list = client.get_encounter_list("94")
+      encounter_list = client.get_encounter_list("20")
       if encounter_list
         puts "encounter list success"
       else
@@ -56,7 +56,7 @@ module AllscriptsApi
       else
         puts "get dictionary failed"
       end
-      authentication = client.get_user_authentication("jmedici", "g2uw$rMvokDFe51i#Qnw")
+      authentication = client.get_user_authentication("avhana", "g2uw$rMvokDFe51i#Qnw")
       if authentication
         puts "get user authentication success"
       else
@@ -80,13 +80,13 @@ module AllscriptsApi
       else
         puts "search patients failed"
       end
-      get_patient = client.get_patient("94")
+      get_patient = client.get_patient("20")
       if get_patient
         puts "get patient success"
       else
         puts "get patient failed"
       end
-      get_patient_full = client.get_patient_full("94")
+      get_patient_full = client.get_patient_full("20")
       if get_patient_full
         puts "get patient full success"
       else
@@ -191,7 +191,7 @@ module AllscriptsApi
     # @return [Array<Hash>, Array, MagicError] a list of scheduled appointments, an empty array, or an error
     def get_schedule(start_date, end_date, other_username = nil)
       params =
-        MagicParams.format(
+        AllscriptsApi::MagicParams.format(
           user_id: @allscripts_username,
           parameter1: format_date_range(start_date, end_date),
           parameter4: other_username

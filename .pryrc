@@ -22,7 +22,7 @@ def bc
                               ENV["ubiquity_id"] + ":" + ENV["app_username"],
                               ENV["app_password"])
   client.get_token
-  client.get_user_authentication("jmedici", "password01")
+  client.get_user_authentication("avhana", "password01")
 
   client
 end
