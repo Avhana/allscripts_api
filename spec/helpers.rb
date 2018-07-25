@@ -22,8 +22,8 @@ end
 # checks to see if secrets are already set
 def check_env
   ENV["app_name"] &&
-    ENV["app_password"] &&
-    ENV["app_username"]
+  ENV["app_password"] &&
+  ENV["app_username"]
 end
 
 # loads secrets from YAML and sets the ENV or raises.
@@ -34,12 +34,12 @@ end
 
 def build_and_auth_client
   client =
-    AllscriptsApi::Client.new("http://twlatestga.unitysandbox.com/",
+    AllscriptsApi::Client.new("https://ubiquityunity.azurewebsites.net/",
                               ENV["app_name"],
                               ENV["app_username"],
                               ENV["app_password"])
   client.get_token
-  client.get_user_authentication("jmedici", "password01")
+  client.get_user_authentication("TW151DEV:jmedici", "password01")
 
   client
 end
