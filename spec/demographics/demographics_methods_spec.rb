@@ -40,6 +40,7 @@ RSpec.describe AllscriptsApi::Demographics::DemographicsMethods do
 
       it "fetches patient demographic info for specified patient" do
         subject
+
         expect(subject).to_not be_nil
         expect(subject[0].keys).to include("ZipCode")
       end
@@ -67,4 +68,3 @@ RSpec.describe AllscriptsApi::Demographics::DemographicsMethods do
     end
   end
 end
-

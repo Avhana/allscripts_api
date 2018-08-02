@@ -14,8 +14,8 @@ RSpec.describe AllscriptsApi::Orders::OrderingMethods do
   end
 
   describe "#save_order", skip: @if_no_secrets do
-    let(:subject) { @client.save_order(19, xml, "ProcedureOrder", order_id) }
-    
+    let(:subject) { @client.save_order(29, xml, "ProcedureOrder", order_id) }
+
     context "with valid xml, order_id, etc" do
       let(:xml) do
         File.read("spec/fixtures/sample_order.xml")
@@ -37,4 +37,3 @@ RSpec.describe AllscriptsApi::Orders::OrderingMethods do
     end
   end
 end
-

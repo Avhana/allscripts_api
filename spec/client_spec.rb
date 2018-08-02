@@ -23,7 +23,7 @@ RSpec.describe AllscriptsApi::Client do
     end
   end
 
-  let(:get_token_uri) { url + "/Unity/UnityService.svc/json/GetToken" }
+  let(:get_token_uri) { url + "/UnityService.svc/json/GetToken" }
   let(:token) { "BFB3B998-A668-4300-A48B-0977E3DFA108" }
 
   before do
@@ -50,7 +50,7 @@ RSpec.describe AllscriptsApi::Client do
   end
 
   describe "#validate_sso_token" do
-    let(:magic_action_uri) { url + "/Unity/UnityService.svc/json/MagicJson" }
+    let(:magic_action_uri) { url + "/UnityService.svc/json/MagicJson" }
     let(:body) { "[{\"Table\":[{\"OrganizationName\":\"Touchworks\",\"PatientID\":\"321\",\"EncounterID\":\"54321\",\"CreatedOn\":\"03/02/2018 5:26:53 PM\",\"SSOUserName\":\"jmedici\"}]}]"  }
 
     before do

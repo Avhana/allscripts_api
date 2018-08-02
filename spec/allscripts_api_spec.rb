@@ -4,7 +4,7 @@ RSpec.describe AllscriptsApi do
   end
 
   describe "#self.connect" do
-  let(:subject) { AllscriptsApi.connect("http://test.example") }
+  let(:subject) { AllscriptsApi.connect("http://test.example", "Test") }
     context "without configuration" do
       it "raises an error" do
         expect { subject }.to raise_error(AllscriptsApi::NoConfigurationError)
@@ -33,7 +33,7 @@ RSpec.describe AllscriptsApi do
       end
     end
   end
-  
+
   describe "#configure" do
     let(:subject) do
       AllscriptsApi.configure do |config|
