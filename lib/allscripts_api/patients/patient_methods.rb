@@ -50,13 +50,13 @@ module AllscriptsApi
                                clinical_data_only = "Y",
                                verbose = "Y", quick_scan = "N")
         params =
-          MagicParams.format(
+          AllscriptsApi::MagicParams.format(
             user_id: @allscripts_username,
             patient_id: patient_id,
-            parameter1: since.strftime("%m/%d/%Y"),
+            parameter1: "2018-07-25T15:06:13.658Z",
             parameter2: clinical_data_only,
             parameter3: verbose,
-            parameter4: quick_scan
+            parameter4: ""
           )
 
         results = magic("GetChangedPatients", magic_params: params)
