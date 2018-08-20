@@ -39,7 +39,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     context "gets full list of providers" do
       it "finds records for jmedici" do
         subject
-        expect(subject.length).to eq(36)
+        expect(subject.length).to eq(76)
       end
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
       it "fetches problems for the specified patient" do
         subject
         expect(subject.length).to be >= 1
-        expect(subject.map { |prob| prob["problemtext"] }).to include("Atrial fibrillation")
+        expect(subject.map { |prob| prob["problemtext"] }).to include("Former Smoker")
       end
     end
 
@@ -70,7 +70,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
       it "fetches problems for the specified patient" do
         subject
         expect(subject.length).to be >= 1
-        expect(subject.map { |prob| prob["Name"] }).to include("INR")
+        expect(subject.map { |prob| prob["Name"] }).to include("HDL")
       end
     end
 
@@ -93,7 +93,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     let(:subject) { @client.get_schedule(start_date, end_date) }
     context "with results" do
       let(:start_date) { Date.parse("May 3 2016") }
-      let(:end_date) { Date.parse("May 8 2016") }
+      let(:end_date) { Date.parse("May 8 2018") }
 
       it "parses appointments into an array of hashes" do
         expect(subject.length).to be > 1

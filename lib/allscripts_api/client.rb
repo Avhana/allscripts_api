@@ -90,7 +90,7 @@ module AllscriptsApi
           req.url(full_path)
           req.body = body
         end
-      read_magic_response(response)
+      read_magic_response(action, response)
     end
 
     private
@@ -104,11 +104,16 @@ module AllscriptsApi
         end
     end
 
-    def read_magic_response(response)
+    def read_magic_response(action, response)
       raise(MagicError, response.body) unless response.status == 200
       response_body = JSON.parse(response.body)[0]
       raise(MagicError, response_body["Error"]) if response_body.key?("Error")
-      response_body
+      begin
+        status = response_body[(action.downcase + "info")].first["STATUS"]
+        raise(MagicError, status) if status.include?("Critical")
+      rescue NoMethodError
+        response_body
+      end
     end
 
     def build_magic_body(action, params)

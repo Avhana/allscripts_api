@@ -22,7 +22,8 @@
   <field id="orderdeferralinterval" value="0"/>
   <field id="orderdeferralunit" value="Days"/>
   <field id="orderstatusreason" value=""/>
-  <field id="encounter" value="239614"/>
+  <field id="encounter" value="52530"/>
+  <field id="orderintorext" value="External/Internal for referral only"/>
   <orderlinkedproblems/>
   <clinicalquestions/>
 </saveorderxml>

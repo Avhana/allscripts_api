@@ -58,12 +58,12 @@ module AllscriptsApi
     # @param unity_url [String] Unity API endpoint to connect to
     # @return [AllscriptsApi::Client, AllscriptsApi::NoConfigurationError]
     # @see AllscriptsApi::Client
-    def connect(unity_url)
+    def connect(unity_url, ubiquity_id)
       unless AllscriptsApi.configuration
         raise NoConfigurationError, NoConfigurationError.error_message
       end
       app_name = AllscriptsApi.configuration.app_name
-      app_username = AllscriptsApi.configuration.app_username
+      app_username = ubiquity_id + ":" + AllscriptsApi.configuration.app_username # Concatenate ubiquity id + : to the front of the app username
       app_password = AllscriptsApi.configuration.app_password
 
       Client.new(unity_url, app_name, app_username, app_password)

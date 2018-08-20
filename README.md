@@ -6,9 +6,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/9889f5255914a5fcbeb5/maintainability)](https://codeclimate.com/github/Avhana/allscripts_api/maintainability)
 [![security](https://hakiri.io/github/Avhana/allscripts_api/master.svg)](https://hakiri.io/github/Avhana/allscripts_api/master)
 
-AllscriptsApi is a simple ruby wrapper around the [Allscripts Unity API](https://developer.allscripts.com/APIReference/). This gem specifically focuses on the JSON 
-functionality of the API and will not support SOAP. Additionally, `allscripts_api` focuses on being simple 
-to use and understand. There are no DSLs, or behind the scenes magic. The code aims to be well documented, 
+AllscriptsApi is a simple ruby wrapper around the [Allscripts Unity API](https://developer.allscripts.com/APIReference/). This gem specifically focuses on the JSON
+functionality of the API and will not support SOAP. Additionally, `allscripts_api` focuses on being simple
+to use and understand. There are no DSLs, or behind the scenes magic. The code aims to be well documented,
 readable, and straightforward to use in your own application. The docs are available [here](http://www.rubydoc.info/github/Avhana/allscripts_api/master/AllscriptsApi)
 
 
@@ -57,7 +57,7 @@ If this works, the client should set a token, and you should see it printed to t
 Assuming a successful call to GetToken, next authenticate the test user to that token.
 
 ```ruby
-client.get_user_authentication("jmedici", "password01")
+client.get_user_authentication("avhana", "password01")
 ```
 
 This call will return a [`MagicError`](https://github.com/Avhana/allscripts_api/blob/master/lib/allscripts_api.rb#L12) if it fails.
@@ -68,7 +68,7 @@ If you want to use the gem from the console, or without ahead of time configurat
   client =
     AllscriptsApi::Client.new(unity_url, app_name, app_username, app_password)
   client.get_token
-  client.get_user_authentication("jmedici", "password01")
+  client.get_user_authentication("avhana", "password01")
 ```
 As you can see, after the initial call, usage is the same. That is because `AllscriptsApi.connect` returns an instance of `AllscriptsApi::Client`. You can find the documentation for `AllscriptsApi.connect` [here](http://www.rubydoc.info/github/Avhana/allscripts_api/master/AllscriptsApi/Client).
 

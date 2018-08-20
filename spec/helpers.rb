@@ -34,9 +34,9 @@ end
 
 def build_and_auth_client
   client =
-    AllscriptsApi::Client.new("https://ubiquityunity.azurewebsites.net/",
+    AllscriptsApi::Client.new(ENV["unity_url"],
                               ENV["app_name"],
-                              ENV["app_username"],
+                              ENV["ubiquity_id"] + ":" + ENV["app_username"],
                               ENV["app_password"])
   client.get_token
   client.get_user_authentication("jmedici", "password01")

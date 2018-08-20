@@ -17,9 +17,9 @@ end
 
 def bc
   client =
-    AllscriptsApi::Client.new("http://twlatestga.unitysandbox.com/",
+    AllscriptsApi::Client.new(ENV["unity_url"],
                               ENV["app_name"],
-                              ENV["app_username"],
+                              ENV["ubiquity_id"] + ":" + ENV["app_username"],
                               ENV["app_password"])
   client.get_token
   client.get_user_authentication("jmedici", "password01")
