@@ -102,11 +102,12 @@ module AllscriptsApi
     # @param start_date [Date] start date inclusive
     # @param end_date [Date] end date inclusive
     # @return [Array<Hash>, Array, MagicError] a list of scheduled appointments, an empty array, or an error
-    def get_schedule(start_date, end_date)
+    def get_schedule(start_date, end_date, other_username = nil)
       params =
         MagicParams.format(
           user_id: @allscripts_username,
-          parameter1: format_date_range(start_date, end_date)
+          parameter1: format_date_range(start_date, end_date),
+          parameter4: other_username
         )
       results = magic("GetSchedule", magic_params: params)
       results["getscheduleinfo"]

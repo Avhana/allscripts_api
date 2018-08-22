@@ -39,7 +39,7 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     context "gets full list of providers" do
       it "finds records for jmedici" do
         subject
-        expect(subject.length).to eq(76)
+        expect(subject.length).to be >= 75
       end
     end
   end
@@ -106,6 +106,18 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
 
       it "returns empty array" do
         expect(subject.length).to be 0
+      end
+    end
+
+    context "with an other_username" do
+      let(:start_date) { Date.parse("May 1 2016") }
+      let(:end_date) { Date.parse("May 8 2018") }
+      let(:other_username) { "jmedici" }
+
+
+      it "returns empty array" do
+        @client.get_schedule(start_date, end_date, other_username)
+        expect(subject.length).to eq(6)
       end
     end
   end
