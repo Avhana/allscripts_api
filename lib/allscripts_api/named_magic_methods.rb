@@ -191,6 +191,47 @@ module AllscriptsApi
       results = magic("LastLogs", magic_params: params)
     end
 
+    def search_delegates(username)
+      params =
+        MagicParams.format(
+          parameter1: username,
+        )
+      results = magic("SearchDelegates", magic_params: params)
+      results["searchdelegatesinfo"]
+    end
+
+    def get_delegates
+      results = magic("GetDelegates")
+      results["getdelegatesinfo"]
+    end
+
+    def get_patient_pharmacies(patient_id = "", show_patient_favorites_only = "Y")
+      params =
+        MagicParams.format(
+          patient_id: patient_id,
+          parameter1: show_patient_favorites_only
+        )
+      results = magic("GetPatientPharmacies", magic_params: params)
+      results["getpatientpharmaciesinfo"]
+    end
+
+    # ViewNote
+    # client.get_dictionary("IDX_TASK_ACTION_DE") "ViewNote"
+    # target_user "jmedici"
+    def save_task(task_type, target_user, work_object_id = 0, comments = "", subject = "Other")
+      params =
+        MagicParams.format(
+          user_id: @allscripts_username,
+          parameter1: task_type,
+          parameter2: target_user,
+          parameter3: work_object_id,
+          parameter4: comments,
+          parameter5: subject
+        )
+      results = magic("SaveTask", magic_params: params)
+      results["savetaskinfo"]
+    end
+
     private
 
     def format_date_range(start_date, end_date)

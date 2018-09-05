@@ -132,6 +132,41 @@ RSpec.describe AllscriptsApi::NamedMagicMethods do
     end
   end
 
+  describe "#search_delegates", skip: @if_no_secrets do
+    let(:subject) { @client.search_delegates("jmedici") }
+    it "fetches delegates" do
+      subject
+      expect(subject.length).to be == 47
+      expect(subject.first["DelegateID"]).to eq("Userjmedici")
+    end
+  end
+
+  describe "#get_delegates", skip: @if_no_secrets do
+    let(:subject) { @client.get_delegates }
+    it "fetches delegates" do
+      subject
+      expect(subject.length).to be == 29
+      expect(subject.first["DelegateID"]).to eq("Team14")
+    end
+  end
+
+  # Can't find a good patient to test with
+  describe "#get_patient_pharmacies", skip: @if_no_secrets do
+    let(:subject) { @client.get_patient_pharmacies("29") }
+    it "fetches delegates" do
+      subject
+      expect(subject.length).to be == 0
+    end
+  end
+
+  describe "#save_task", skip: @if_no_secrets do
+    let(:subject) { @client.save_task("ViewNote", "jmedici") }
+    it "fetches delegates" do
+      subject
+      expect(subject.first["status"]).to eq("success")
+    end
+  end
+
   describe "#get_dictionary", skip: @if_no_secrets do
     let(:subject) { @client.get_dictionary(dictionary_name) }
     let(:example_data) do
