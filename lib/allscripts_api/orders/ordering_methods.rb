@@ -37,7 +37,8 @@ module AllscriptsApi
           parameter4: problem_id,
           parameter5: trans_id
         )
-        magic("SaveOrder", magic_params: params)
+        results = magic("SaveOrder", magic_params: params)
+        results["saveorderinfo"]
       end
 
       # a wrapper around GetOrderWorkflow
