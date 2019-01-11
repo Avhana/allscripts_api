@@ -24,7 +24,7 @@ RSpec.describe AllscriptsApi::Orders::OrderingMethods do
 
       it "returns a success message" do
         subject
-        expect(subject["saveorderinfo"][0]["status"]).to eq("Success")
+        expect(subject[0]["status"]).to eq("Success")
       end
     end
 
