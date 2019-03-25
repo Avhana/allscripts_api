@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "A simple, configurable wrapper around Allscripts APIs"
   spec.description   = %(The allscripts_api gem wraps a set of Allscripts APIs, including
-                          but not limited to Unity. The gem focuses on JSON endpoints instead 
+                          but not limited to Unity. The gem focuses on JSON endpoints instead
                           of SOAP.)
   spec.homepage      = "https://github.com/Avhana/allscripts_api"
 
@@ -24,9 +24,9 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "faraday", ">= 0.12.2"
   spec.add_development_dependency "awesome_print"
-  spec.add_development_dependency "bundler", "~> 1.16"
+  spec.add_development_dependency "bundler", "~> 2.0.1"
   spec.add_development_dependency "coveralls"
-  spec.add_development_dependency "nokogiri"
+  spec.add_development_dependency "nokogiri", ">= 1.8.5"
   spec.add_development_dependency "pronto"
   spec.add_development_dependency "pronto-rubocop"
   spec.add_development_dependency "pry"

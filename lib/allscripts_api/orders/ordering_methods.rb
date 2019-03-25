@@ -8,8 +8,9 @@ module AllscriptsApi
     # in {AllscriptsApi::Client} and can be accessed from
     # instances of that class.
     module OrderingMethods
-      # a wrapper around SaveOrder, which save and order of the
-      # sepcified category, among: AdministeredMedication,
+      # client.get_dictionary("QO_Classification_DE") gets list of possible orders
+      # a wrapper around SaveOrder, which saves an order of the
+      # specified category, among: AdministeredMedication,
       # Immunization, InstructionOrder, ProcedureOrder,
       # Referral, SuppliesOrder.
       #

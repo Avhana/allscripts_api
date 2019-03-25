@@ -89,6 +89,7 @@ module AllscriptsApi
         conn.post do |req|
           req.url(full_path)
           req.body = body
+          req.options.timeout = 180 # Timeout in seconds
         end
       read_magic_response(action, response)
     end
