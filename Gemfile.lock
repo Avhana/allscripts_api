@@ -36,11 +36,11 @@ GEM
     interception (0.5)
     json (2.1.0)
     method_source (0.9.0)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    nokogiri (1.8.2)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.10.2)
+      mini_portile2 (~> 2.4.0)
     octokit (4.7.0)
       sawyer (~> 0.8.0, >= 0.5.3)
     parallel (1.12.1)
@@ -123,9 +123,9 @@ PLATFORMS
 DEPENDENCIES
   allscripts_api!
   awesome_print
-  bundler (~> 1.16)
+  bundler (~> 2.0.1)
   coveralls
-  nokogiri
+  nokogiri (>= 1.8.5)
   pronto
   pronto-rubocop
   pry
@@ -138,4 +138,4 @@ DEPENDENCIES
   yard (~> 0.9)
 
 BUNDLED WITH
-   1.16.1
+   2.0.1
